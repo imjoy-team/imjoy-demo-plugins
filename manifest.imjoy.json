@@ -1,0 +1,176 @@
+{
+ "name": "ImJoy Repository",
+ "description": "The official plugin repository provided by ImJoy.io.",
+ "version": "0.2.0",
+ "uri_root": "https://raw.githubusercontent.com/oeway/ImJoy-Plugins/master/repository",
+ "plugins": [
+  {
+   "name": "3D Demos",
+   "mode": "window",
+   "tags": [],
+   "ui": "Demo: {id: 'demo', type:'choose', options: ['Sponza', 'Volume(vtk.js)'], placeholder: 'Volume(vtk.js)'}",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "A set of demo plugins of webGL 3D.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "dependencies": [],
+   "uri": "3dDemos.imjoy.html"
+  },
+  {
+   "name": "Handlebars Demo",
+   "mode": "window",
+   "tags": [],
+   "ui": "",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "This plugin demonstrates how handlebars can be used to generate HTML from a tempate and some data.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "dependencies": [],
+   "uri": "handlebarsDemo.imjoy.html"
+  },
+  {
+   "name": "Python Demo Plugin",
+   "mode": "pyworker",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "createdAt": "Mon Jun 26 2018 15:45:30",
+   "description": "A plugin for demonstrating python plugin.",
+   "tags": [],
+   "ui": "run python plugin",
+   "inputs": null,
+   "outputs": null,
+   "icon": "local_florist",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "cmd": "python",
+   "dependencies": [],
+   "uri": "pythonDemoPlugin.imjoy.html"
+  },
+  {
+   "name": "showDialog Demo",
+   "mode": "webworker",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "createdAt": "Mon Jun 19 2018 16:33:11",
+   "description": "A plugin for applying lookup table to a single-channel image.",
+   "tags": [],
+   "inputs": null,
+   "outputs": null,
+   "icon": "color_lens",
+   "dependencies": [],
+   "uri": "showDialog.imjoy.html"
+  },
+  {
+   "name": "tSNE",
+   "mode": "window",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "tags": [],
+   "ui": "show tSNE plot",
+   "inputs": null,
+   "outputs": null,
+   "show_panel": true,
+   "description": "A plugin for doing tSNE visualization, using a library from https://cs.stanford.edu/people/karpathy/tsnejs/.",
+   "icon": null,
+   "dependencies": [],
+   "disabled": true,
+   "uri": "tSNE.imjoy.html"
+  },
+  {
+   "name": "tensorTest",
+   "mode": "iframe",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "tags": [],
+   "ui": null,
+   "inputs": null,
+   "outputs": null,
+   "show_panel": true,
+   "description": "A plugin for testing tensorflow.js.",
+   "icon": null,
+   "dependencies": [],
+   "uri": "tensorTest.imjoy.html"
+  },
+  {
+   "name": "Test Webworker Plugin",
+   "mode": "webworker",
+   "tags": [],
+   "ui": [
+    "plain string",
+    {
+     "test string option": "{id: 'option1', type: 'choose', options:['red', 'yellow']}",
+     "test dict option": {
+      "id": "option2",
+      "type": "choose",
+      "options": [
+       "read",
+       "yellow"
+      ]
+     },
+     "test number": {
+      "id": "option3",
+      "type": "number",
+      "placeholder": 1
+     }
+    }
+   ],
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "This plugin will run all the api functions for testing purposes.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "env": null,
+   "requirements": null,
+   "dependencies": [
+    "Test Window Plugin"
+   ],
+   "uri": "testWebworkerPlugin.imjoy.html"
+  },
+  {
+   "name": "Test Window Plugin",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "describe your plugin here.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "dependencies": [],
+   "uri": "testWindowPlugin.imjoy.html"
+  },
+  {
+   "name": "Three.js Demo",
+   "mode": "window",
+   "tags": [],
+   "ui": null,
+   "inputs": null,
+   "outputs": null,
+   "show_panel": true,
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "createdAt": "Mon Jun 19 2018 15:45:30",
+   "description": "A plugin for demonstrate that one can use Three.js in a plugin.",
+   "icon": null,
+   "dependencies": [],
+   "disabled": true,
+   "uri": "threejsDemo.imjoy.html"
+  }
+ ],
+ "collections": [
+  {
+   "name": "ImJoy Default Plugins",
+   "description": "",
+   "plugins": [],
+   "workspace": "default"
+  }
+ ]
+}
