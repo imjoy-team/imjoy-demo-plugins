@@ -1,0 +1,48 @@
+﻿<docs>
+Describe your plugin here.
+</docs>
+
+<config lang="json">
+{
+  "name": "Test WebPython Plugin",
+  "mode": "webpython",
+  "tags": [],
+  "ui": ["plain string",
+         {"test string option": "{id: 'option1', type: 'choose', options:['red', 'yellow']}",
+          "test dict option": {"id": "option2", "type": "choose", "options": ["read", "yellow"]},
+          "test number": {"id": "option3", "type": "number",  "placeholder": 1}
+         }],
+  "version": "0.1.0",
+  "api_version": "0.1.0",
+  "description": "This plugin will run all the api functions for testing purposes.",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "env": null,
+  "requirements": null,
+  "dependencies": ["Test Window Plugin"]
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin():
+    def setup(self):
+        pass
+    def callback(self, param):
+        print('calling back: ', param)
+
+    def run(self, my):
+        for i in range(10):
+            def cb(_):
+                api.showProgress(i*10)
+            api.showStatus('hello world ' + str(i)).then(cb)
+        api.createWindow({'name': 'test window', 'type': 'Test Window Plugin', 'w':7, 'h':7, 'data': {'dummy_value': 123456, 'callback': self.callback}, 'config': {}}).then(self.window_callback)
+
+    def window_callback(self, windowId):
+        # use `windowId` here to access the window
+        print(windowId)
+        for i in range(20):
+            api.updateWindow({'id': windowId, 'data': {'dummy_value': i}})
+
+api.export(ImJoyPlugin())
+</script>
