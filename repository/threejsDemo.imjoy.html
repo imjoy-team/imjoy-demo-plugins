@@ -17,6 +17,9 @@ This plugin shows a demo for Three.js.
   "createdAt": "Mon Jun 19 2018 15:45:30",
   "description": "A plugin for demonstrate that one can use Three.js in a plugin.",
   "icon": null,
+  "requirements": ["https://threejs.org/build/three.js",
+                   "https://threejs.org/examples/js/controls/OrbitControls.js",
+                   "https://threejs.org/examples/js/Detector.js"],
   "dependencies": [],
   "disabled": true
 }
@@ -150,10 +153,7 @@ function build3d(text) {
 
 class ImJoyPlugin {
   async setup() {
-    await importScripts("https://threejs.org/build/three.js",
-                  "https://threejs.org/examples/js/controls/OrbitControls.js",
-                  "https://threejs.org/examples/js/Detector.js"
-    )
+
   }
 
   run(my) {

@@ -17,13 +17,13 @@ For more detailed usage, please refer to [handlbebars](https://handlebarsjs.com/
   "icon": "extension",
   "inputs": null,
   "outputs": null,
+  "requirements": ["https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"],
   "dependencies": []
 }
 </config>
 <script lang="javascript">
 class ImJoyPlugin {
   async setup() {
-    await importScripts("https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js")
     self.context = {title: "My New Post", body: "This is my first post!"}
     this.updateHTML()
   }

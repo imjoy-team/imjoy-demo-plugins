@@ -16,6 +16,7 @@ This plugin shows a demo for using tensorflow.js.
   "show_panel": true,
   "description": "A plugin for testing tensorflow.js.",
   "icon": null,
+  "requirements": ["https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"],
   "dependencies": []
 }
 </config>
@@ -23,7 +24,7 @@ This plugin shows a demo for using tensorflow.js.
 <script lang="javascript">
 class ImJoyPlugin {
   async setup() {
-    await importScripts("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs")
+
   }
 
   run(my) {

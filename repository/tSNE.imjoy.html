@@ -15,6 +15,7 @@ This plugin shows a demo for tSNE visualization.
   "show_panel": true,
   "description": "A plugin for doing tSNE visualization, using a library from https://cs.stanford.edu/people/karpathy/tsnejs/.",
   "icon": null,
+  "requirements": ["https://cdn.rawgit.com/karpathy/tsnejs/13ece5d7/tsne.js"],
   "dependencies": [],
   "disabled": true
 }
@@ -30,8 +31,6 @@ This plugin shows a demo for tSNE visualization.
 <script lang="javascript">
 class ImJoyPlugin {
   async setup() {
-    await importScripts("https://cdn.rawgit.com/karpathy/tsnejs/13ece5d7/tsne.js"
-    )
   }
 
   run(my) {

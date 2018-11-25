@@ -2,7 +2,7 @@
  "name": "ImJoy Repository",
  "description": "The official plugin repository provided by ImJoy.io.",
  "version": "0.2.0",
- "uri_root": "https://raw.githubusercontent.com/oeway/ImJoy-Demo-Plugins/master/repository",
+ "uri_root": "https://raw.githubusercontent.com/oeway/ImJoy-Plugins/master/repository",
  "plugins": [
   {
    "name": "3D Demos",
@@ -19,6 +19,42 @@
    "uri": "3dDemos.imjoy.html"
   },
   {
+   "name": "Test WebPython Plugin",
+   "mode": "webpython",
+   "tags": [],
+   "ui": [
+    "plain string",
+    {
+     "test string option": "{id: 'option1', type: 'choose', options:['red', 'yellow']}",
+     "test dict option": {
+      "id": "option2",
+      "type": "choose",
+      "options": [
+       "read",
+       "yellow"
+      ]
+     },
+     "test number": {
+      "id": "option3",
+      "type": "number",
+      "placeholder": 1
+     }
+    }
+   ],
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "This plugin will run all the api functions for testing purposes.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "env": null,
+   "requirements": null,
+   "dependencies": [
+    "Test Window Plugin"
+   ],
+   "uri": "TestWebPythonPlugin.imjoy.html"
+  },
+  {
    "name": "Handlebars Demo",
    "mode": "window",
    "tags": [],
@@ -29,6 +65,9 @@
    "icon": "extension",
    "inputs": null,
    "outputs": null,
+   "requirements": [
+    "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
+   ],
    "dependencies": [],
    "uri": "handlebarsDemo.imjoy.html"
   },
@@ -78,6 +117,9 @@
    "show_panel": true,
    "description": "A plugin for doing tSNE visualization, using a library from https://cs.stanford.edu/people/karpathy/tsnejs/.",
    "icon": null,
+   "requirements": [
+    "https://cdn.rawgit.com/karpathy/tsnejs/13ece5d7/tsne.js"
+   ],
    "dependencies": [],
    "disabled": true,
    "uri": "tSNE.imjoy.html"
@@ -94,6 +136,9 @@
    "show_panel": true,
    "description": "A plugin for testing tensorflow.js.",
    "icon": null,
+   "requirements": [
+    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"
+   ],
    "dependencies": [],
    "uri": "tensorTest.imjoy.html"
   },
@@ -160,6 +205,11 @@
    "createdAt": "Mon Jun 19 2018 15:45:30",
    "description": "A plugin for demonstrate that one can use Three.js in a plugin.",
    "icon": null,
+   "requirements": [
+    "https://threejs.org/build/three.js",
+    "https://threejs.org/examples/js/controls/OrbitControls.js",
+    "https://threejs.org/examples/js/Detector.js"
+   ],
    "dependencies": [],
    "disabled": true,
    "uri": "threejsDemo.imjoy.html"
