@@ -62,7 +62,7 @@
     "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
    ],
    "dependencies": [
-    "GUI PyWorker"
+    "ImJoy-Demo-Plugins:GUI PyWorker"
    ],
    "defaults": {
     "w": 12,
@@ -125,7 +125,7 @@
     "numpy"
    ],
    "dependencies": [
-    "JScharts"
+    "ImJoy-Demo-Plugins:JScharts"
    ],
    "uri": "PythonToJScharts.imjoy.html"
   },
