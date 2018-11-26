@@ -96,7 +96,9 @@
     "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
     "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
    ],
-   "dependencies": [],
+   "dependencies": [
+    "[DEMO] GUI PyWorker"
+   ],
    "defaults": {
     "w": 12,
     "h": 25
