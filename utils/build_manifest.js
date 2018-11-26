@@ -8,8 +8,8 @@ var collections_dir = "./collections";
 var manifest_path = "./manifest.imjoy.json"
 var repo_version = "0.2.0"
 var uri_root = "/repository"
-var repo_name = "ImJoy Repository"
-var repo_description = "The official plugin repository provided by ImJoy.io."
+var repo_name = "ImJoy Demos"
+var repo_description = "A set of demo plugins provided by ImJoy.io."
 
 function parsePlugin(code){
   var pluginComp = pluginParser.parseComponent(code)
