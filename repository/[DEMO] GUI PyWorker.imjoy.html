@@ -1,0 +1,106 @@
+﻿
+<docs lang="markdown">
+Describe your plugin here.
+</docs>
+
+<config lang="json">
+{
+  "name": "[DEMO] GUI PyWorker",
+  "mode": {"webPy":"webpython","nativePy":"pyworker"},
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "Python worker for GUI demo",
+  "tags": ["nativePy","webPy"],
+  "ui": "UI for this plugin",
+  "inputs": null,
+  "outputs": null,
+  "flags": [],
+  "icon": "assistant",
+  "env": null,
+  "requirements": ["numpy"],
+  "dependencies": []
+}
+</config>
+
+
+
+<script lang="python">
+import numpy as np
+
+
+class ImJoyPlugin():
+    def setup(self):
+        pass
+
+    # Run function (not attributed)
+    def run(self, my):
+        pass
+
+    # Function to calculate data
+    def calc_results(self,data):
+       
+        # Extract input parameters
+        n_points = float(data['npoints']) 
+        math_op = data['math_op']
+        callback_fun = data['callback']
+
+        # Calculate desired output
+        x = np.arange(0.01, 5.0, 5.0/n_points)
+        if math_op == 'Sine':
+            y =  np.sin(2*np.pi*x)
+        elif math_op == 'Exponential':
+            y = np.exp(-x)
+        elif math_op == 'Log10':
+            y = np.log10(x)   
+
+        # Store values
+        self.x_values = x
+        self.y_values = y
+
+        # Invoke window callback
+        callback_fun({'x':x.tolist(),
+                      'y':[y.tolist()],
+                      'mode':['line'],
+                      'name':['data']})
+
+
+    def add_noise(self,data):
+        
+        print('Input for add_noise:')
+        print(data)
+
+        # Add noise
+        scale = float(data['scale'])
+        self.y_noise = self.y_values + np.random.normal(scale = scale,size=self.y_values.size)
+
+        # Plot results
+        data_plot = {'x':self.x_values.tolist(),
+                     'y':[self.y_values.tolist(),
+                          self.y_noise.tolist()],
+                     'mode':['marker+line','line'],
+                     'name':['raw','noisy']}
+        
+        #  callback
+        data['callback'](data_plot)
+        
+
+
+    # Function to fit data
+    def fit_results(self,data):
+
+        # Polynomial fit
+        y_fit = np.polyfit(self.x_values, self.y_values,10)
+        self.y_fit = y_fit
+
+        # Plot results
+        data_plot = {'x':self.x_values.tolist(),
+                     'y':(self.y_values.tolist(),
+                          self.y_fit.tolist()),
+                     'mode':('marker+line','line'),
+                     'name':('data','fit')}
+        
+        #  callback
+        data['callback'](data_plot)
+
+api.export(ImJoyPlugin())
+</script>
