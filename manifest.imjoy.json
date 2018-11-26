@@ -1,8 +1,8 @@
 {
- "name": "ImJoy Repository",
- "description": "The official plugin repository provided by ImJoy.io.",
+ "name": "ImJoy Demos",
+ "description": "A set of demo plugins provided by ImJoy.io",
  "version": "0.2.0",
- "uri_root": "https://raw.githubusercontent.com/oeway/ImJoy-Demo-Plugins/master/repository",
+ "uri_root": "/repository",
  "plugins": [
   {
    "name": "3D Demos",
