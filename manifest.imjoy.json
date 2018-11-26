@@ -1,6 +1,6 @@
 {
- "name": "ImJoy Repository",
- "description": "The official plugin repository provided by ImJoy.io.",
+ "name": "ImJoy Demos",
+ "description": "A set of demo plugins provided by ImJoy.io.",
  "version": "0.2.0",
  "uri_root": "/repository",
  "plugins": [
@@ -37,6 +37,7 @@
    "flags": [],
    "icon": "assistant",
    "env": null,
+   "runnable": false,
    "requirements": [
     "numpy"
    ],
@@ -68,6 +69,65 @@
     "h": 25
    },
    "uri": "GUI.imjoy.html"
+  },
+  {
+   "name": "JS charts",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "Window showing JS charts.",
+   "icon": "photo",
+   "inputs": null,
+   "outputs": null,
+   "runnable": false,
+   "requirements": [
+    "https://d3js.org/d3.v5.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 10,
+    "h": 20
+   },
+   "uri": "JS charts.imjoy.html"
+  },
+  {
+   "name": "Python to JS charts",
+   "mode": {
+    "nativePy": "pyworker",
+    "webPy": "webpython"
+   },
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "tags": [
+    "nativePy",
+    "webPy"
+   ],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "JS charts"
+   ],
+   "uri": "Python to JS charts.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
