@@ -1,7 +1,7 @@
 ﻿
 <docs lang="markdown">
 Plugin demonstrates how to build a user interface that interacts with Python
-to perform calculations. 
+to perform calculations.
 
 Interface is build with [**spectre.css**](https://picturepan2.github.io/spectre/index.html)
 "A Lightweight, Responsive and Modern CSS Framework"
@@ -10,7 +10,7 @@ Interface is build with [**spectre.css**](https://picturepan2.github.io/spectre/
 
 <config lang="json">
 {
-  "name": "[DEMO] GUI",
+  "name": "GUI",
   "mode": "window",
   "tags": [],
   "ui": "User interface interacts with Python.",
@@ -24,7 +24,7 @@ Interface is build with [**spectre.css**](https://picturepan2.github.io/spectre/
                    "https://unpkg.com/spectre.css/dist/spectre.min.css",
                    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
                    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"],
-  "dependencies": ["[DEMO] GUI PyWorker"],
+  "dependencies": ["GUI PyWorker"],
   "defaults": {"w": 12, "h": 25}
 }
 </config>
@@ -33,7 +33,7 @@ Interface is build with [**spectre.css**](https://picturepan2.github.io/spectre/
 class ImJoyPlugin {
 
   async setup() {
-    
+
     this.noise_scale = 2/100;
 
     // Button "Calculate and Plot"
@@ -63,41 +63,41 @@ class ImJoyPlugin {
 // Function called upon click "Calculate and Plot"
 calc_plot(n_points,math_op){
 
-    api.call('[DEMO] GUI PyWorker', 'calc_results', 
+    api.call('GUI PyWorker', 'calc_results',
                   {'npoints':n_points,
                   'math_op':math_op,
                   'callback':this.callback_plot
                   }
               );
-    document.getElementById("btn_noise").disabled = false;          
+    document.getElementById("btn_noise").disabled = false;
   }
 
 // Function called upon click "Add noise"
 noise_plot(scale){
     console.log('test')
-    api.call('PythonWorker', 'add_noise', 
+    api.call('PythonWorker', 'add_noise',
                   {
                   'scale':scale,
                   'callback':this.callback_plot
                   }
-              );    
+              );
   }
 
   // Callback to plot data in the interface
 callback_plot(data_plot){
-      
+
        console.log(data_plot);
         // Construct data input for plotly
         // Supported modes:  'markers','lines+markers', 'lines
         var n_y = data_plot["y"].length
         var data = [];
         for (var i = 0; i < n_y; i++) {
-            var trace = { 
-                  x:data_plot["x"], 
-                  y:data_plot["y"][i], 
+            var trace = {
+                  x:data_plot["x"],
+                  y:data_plot["y"][i],
                   type:'scatter',
                   mode:data_plot["mode"][i],
-                  name:data_plot["name"][i]} 
+                  name:data_plot["name"][i]}
             data.push(trace);
         };
         console.log(data);
@@ -118,7 +118,7 @@ callback_plot(data_plot){
                 api.alert('Closest point clicked:\n\n'+pts);
             });
   }
-  
+
 set_slider_text(value) {
     //var x = document.getElementById("scale_slider").value;
     var num = value*this.noise_scale;
@@ -202,7 +202,7 @@ api.export(new ImJoyPlugin())
     </div>
 
     <br>
-    
+
     <br>
     <div>
        <div id="chart"></div>
@@ -215,4 +215,3 @@ api.export(new ImJoyPlugin())
 <style lang="css">
 
 </style>
-
