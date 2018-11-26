@@ -1,12 +1,12 @@
 ﻿<docs lang="markdown">
-Window plugin to show data received from a Python worker in a JS chart. 
+Window plugin to show data received from a Python worker in a JS chart.
 
 Please note that when run by itself the plugin does not display anything.
 </docs>
 
 <config lang="json">
 {
-  "name": "JS charts",
+  "name": "JScharts",
   "mode": "window",
   "tags": [],
   "ui": "UI for Untitled Plugin",
@@ -43,7 +43,7 @@ class ImJoyPlugin {
    // Plot with selected library
    switch( my.data.type) {
 
-        // C3 library   
+        // C3 library
         case 'C3':
             console.log(' Creating C3 graph ')
 
@@ -69,10 +69,10 @@ class ImJoyPlugin {
             console.log(' Creating Plotly graph ')
 
             var myPlot = document.getElementById('chart'),
-                data = [ { x:my.data.x, 
-                           y:my.data.y, 
+                data = [ { x:my.data.x,
+                           y:my.data.y,
                            type:'scatter',
-                           mode:'lines+markers', 
+                           mode:'lines+markers',
                            marker:{size:5} } ],
                 layout = {
                         hovermode:'closest',
@@ -98,7 +98,7 @@ class ImJoyPlugin {
 
             var canvas = document.getElementById('canvas');
             var ctx = canvas.getContext('2d');
-              
+
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -115,10 +115,10 @@ class ImJoyPlugin {
 
                 // Configuration options go here
                 options: {responsive:true}
-                
+
                 });
 
-            
+
             var ctx = canvas.getContext('2d');
 
             ctx.fillStyle = 'green';

@@ -1,10 +1,10 @@
 ﻿<docs lang="markdown">
 Plugin to demonstrate how some major JavaScript libraries can be called from
-within a Python plugin. 
+within a Python plugin.
 
 More information about these libraries can be found here
 
-* [C3](https://c3js.org/)    
+* [C3](https://c3js.org/)
 * [Chart.js](https://www.chartjs.org/docs/latest/)
 * [Plotly](https://plot.ly/javascript/)
 
@@ -12,7 +12,7 @@ More information about these libraries can be found here
 
 <config lang="json">
 {
-  "name": "Python to JS charts",
+  "name": "PythonToJScharts",
   "mode": {"nativePy": "pyworker", "webPy": "webpython"},
   "version": "0.1.0",
   "api_version": "0.1.1",
@@ -31,7 +31,7 @@ More information about these libraries can be found here
   "icon": "swap_horiz",
   "env": null,
   "requirements": ["numpy"],
-  "dependencies": ["JS charts"]
+  "dependencies": ["JScharts"]
 }
 </config>
 
@@ -52,23 +52,23 @@ class ImJoyPlugin():
         # Create damped cosine and dictionary for window
         x_values = np.arange(0.0, 5.0, 5.0/my.config.n_points)
         y_values = np.exp(-x_values) * np.cos(2*np.pi*x_values)
-    
-        data = {'x': x_values.tolist(), 
-                  'y': y_values.tolist(), 
+
+        data = {'x': x_values.tolist(),
+                  'y': y_values.tolist(),
                   'type': my.config.chart_type,
                    'chart_txt':my.config.chart_txt}
 
         data_plot = {
-                'name':'[DEMO] JS charts', 
-                'type':'JS charts', 
-                'w':12, 'h':15, 
+                'name':'[DEMO] JS charts',
+                'type':'JScharts', 
+                'w':12, 'h':15,
                 'data':data}
 
         # Check if window was defined
-   
+
         # Native Python worker
         if api.TAG == "nativePy":
-            
+
             if self.windowId is None:
                 self.windowId = await api.createWindow(data_plot)
                 print(f'New window with ID: {self.windowId}')
@@ -82,9 +82,9 @@ class ImJoyPlugin():
                 except:
                    self.windowId = await api.createWindow(data_plot)
                    print(f'Could not print to old window. New window with ID: {self.windowId}')
-         
-                
-        # Web Python worker        
+
+
+        # Web Python worker
         else:
             api.createWindow(data_plot).then(print)
 

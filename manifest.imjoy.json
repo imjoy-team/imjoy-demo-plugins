@@ -71,7 +71,7 @@
    "uri": "GUI.imjoy.html"
   },
   {
-   "name": "JS charts",
+   "name": "JScharts",
    "mode": "window",
    "tags": [],
    "ui": "UI for Untitled Plugin",
@@ -94,10 +94,10 @@
     "w": 10,
     "h": 20
    },
-   "uri": "JS charts.imjoy.html"
+   "uri": "JScharts.imjoy.html"
   },
   {
-   "name": "Python to JS charts",
+   "name": "PythonToJScharts",
    "mode": {
     "nativePy": "pyworker",
     "webPy": "webpython"
@@ -125,9 +125,9 @@
     "numpy"
    ],
    "dependencies": [
-    "JS charts"
+    "JScharts"
    ],
-   "uri": "Python to JS charts.imjoy.html"
+   "uri": "PythonToJScharts.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
