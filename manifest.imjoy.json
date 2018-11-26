@@ -125,7 +125,7 @@
     "numpy"
    ],
    "dependencies": [
-    "oeway/ImJoy-Plugins:JScharts"
+    "oeway/ImJoy-Demo-Plugins:JScharts"
    ],
    "uri": "PythonToJScharts.imjoy.html"
   },
