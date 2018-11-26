@@ -1,6 +1,6 @@
 {
- "name": "ImJoy Demos",
- "description": "A set of demo plugins provided by ImJoy.io",
+ "name": "ImJoy Repository",
+ "description": "The official plugin repository provided by ImJoy.io.",
  "version": "0.2.0",
  "uri_root": "/repository",
  "plugins": [
@@ -53,6 +53,55 @@
     "Test Window Plugin"
    ],
    "uri": "TestWebPythonPlugin.imjoy.html"
+  },
+  {
+   "name": "[DEMO] GUI PyWorker",
+   "mode": {
+    "webPy": "webpython",
+    "nativePy": "pyworker"
+   },
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "Python worker for GUI demo",
+   "tags": [
+    "nativePy",
+    "webPy"
+   ],
+   "ui": "UI for this plugin",
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "assistant",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [],
+   "uri": "[DEMO] GUI PyWorker.imjoy.html"
+  },
+  {
+   "name": "[DEMO] GUI",
+   "mode": "window",
+   "tags": [],
+   "ui": "User interface interacts with Python.",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "icon": "tv",
+   "inputs": null,
+   "outputs": null,
+   "requirements": [
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://unpkg.com/spectre.css/dist/spectre.min.css",
+    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
+    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 12,
+    "h": 25
+   },
+   "uri": "[DEMO] GUI.imjoy.html"
   },
   {
    "name": "Handlebars Demo",
