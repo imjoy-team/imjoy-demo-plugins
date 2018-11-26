@@ -161,7 +161,7 @@
    "env": null,
    "requirements": null,
    "dependencies": [
-    "Test Window Plugin"
+    "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
    "uri": "TestWebPythonPlugin.imjoy.html"
   },
@@ -285,7 +285,7 @@
    "env": null,
    "requirements": null,
    "dependencies": [
-    "Test Window Plugin"
+    "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
    "uri": "testWebworkerPlugin.imjoy.html"
   },
