@@ -5,7 +5,7 @@ Describe your plugin here.
 
 <config lang="json">
 {
-  "name": "[DEMO] GUI PyWorker",
+  "name": "GUI PyWorker",
   "mode": {"webPy":"webpython","nativePy":"pyworker"},
   "version": "0.1.0",
   "api_version": "0.1.1",
@@ -38,9 +38,9 @@ class ImJoyPlugin():
 
     # Function to calculate data
     def calc_results(self,data):
-       
+
         # Extract input parameters
-        n_points = float(data['npoints']) 
+        n_points = float(data['npoints'])
         math_op = data['math_op']
         callback_fun = data['callback']
 
@@ -51,7 +51,7 @@ class ImJoyPlugin():
         elif math_op == 'Exponential':
             y = np.exp(-x)
         elif math_op == 'Log10':
-            y = np.log10(x)   
+            y = np.log10(x)
 
         # Store values
         self.x_values = x
@@ -65,7 +65,7 @@ class ImJoyPlugin():
 
 
     def add_noise(self,data):
-        
+
         print('Input for add_noise:')
         print(data)
 
@@ -79,10 +79,10 @@ class ImJoyPlugin():
                           self.y_noise.tolist()],
                      'mode':['marker+line','line'],
                      'name':['raw','noisy']}
-        
+
         #  callback
         data['callback'](data_plot)
-        
+
 
 
     # Function to fit data
@@ -98,7 +98,7 @@ class ImJoyPlugin():
                           self.y_fit.tolist()),
                      'mode':('marker+line','line'),
                      'name':('data','fit')}
-        
+
         #  callback
         data['callback'](data_plot)
 

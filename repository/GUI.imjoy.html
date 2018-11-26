@@ -75,7 +75,7 @@ calc_plot(n_points,math_op){
 // Function called upon click "Add noise"
 noise_plot(scale){
     console.log('test')
-    api.call('PythonWorker', 'add_noise',
+    api.call('GUI PyWorker', 'add_noise',
                   {
                   'scale':scale,
                   'callback':this.callback_plot

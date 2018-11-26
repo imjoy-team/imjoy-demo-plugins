@@ -19,7 +19,7 @@
    "uri": "3dDemos.imjoy.html"
   },
   {
-   "name": "[DEMO] GUI PyWorker",
+   "name": "GUI PyWorker",
    "mode": {
     "webPy": "webpython",
     "nativePy": "pyworker"
