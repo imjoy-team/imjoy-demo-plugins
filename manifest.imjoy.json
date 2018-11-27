@@ -71,7 +71,61 @@
    "uri": "GUI.imjoy.html"
   },
   {
-   "name": "JScharts",
+   "name": "JS charts PyWorker",
+   "mode": "pyworker",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "tags": [],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:JS charts"
+   ],
+   "uri": "JS charts PyWorker.imjoy.html"
+  },
+  {
+   "name": "JS charts WebPython",
+   "mode": "webpython",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "tags": [],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:JS charts"
+   ],
+   "uri": "JS charts WebPython.imjoy.html"
+  },
+  {
+   "name": "JS charts",
    "mode": "window",
    "tags": [],
    "ui": "UI for Untitled Plugin",
@@ -94,40 +148,7 @@
     "w": 10,
     "h": 20
    },
-   "uri": "JScharts.imjoy.html"
-  },
-  {
-   "name": "PythonToJScharts",
-   "mode": {
-    "nativePy": "pyworker",
-    "webPy": "webpython"
-   },
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "describe your plugin here.",
-   "tags": [
-    "nativePy",
-    "webPy"
-   ],
-   "ui": [
-    "Try differen JS chart libraries.",
-    "<hr>",
-    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
-    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
-    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
-   ],
-   "inputs": null,
-   "outputs": null,
-   "flags": [],
-   "icon": "swap_horiz",
-   "env": null,
-   "requirements": [
-    "numpy"
-   ],
-   "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:JScharts"
-   ],
-   "uri": "PythonToJScharts.imjoy.html"
+   "uri": "JS charts.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",

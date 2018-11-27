@@ -12,12 +12,12 @@ More information about these libraries can be found here
 
 <config lang="json">
 {
-  "name": "PythonToJScharts",
-  "mode": {"nativePy": "pyworker", "webPy": "webpython"},
+  "name": "JS charts WebPython",
+  "mode": "webpython",
   "version": "0.1.0",
   "api_version": "0.1.1",
   "description": "describe your plugin here.",
-  "tags": ["nativePy","webPy"],
+  "tags": [],
   "ui": [
         "Try differen JS chart libraries.",
         "<hr>",
@@ -31,62 +31,43 @@ More information about these libraries can be found here
   "icon": "swap_horiz",
   "env": null,
   "requirements": ["numpy"],
-  "dependencies": ["oeway/ImJoy-Demo-Plugins:JScharts"]
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:JS charts"]
 }
 </config>
 
 <script lang="python">
 import numpy as np
 
-import asyncio
-
 class ImJoyPlugin():
     def setup(self):
         self.windowId = None
 
-    async def run(self, my):
+    def set_window(self,windowId):
+        self.windowId=windowId
 
-        api.showStatus('[DEMO] Python worker plotting to JS')
+    def run(self, my):
+        api.showStatus('[DEMO] WebPython plotting to JS')
         print(my.config.chart_type)
-
         # Create damped cosine and dictionary for window
         x_values = np.arange(0.0, 5.0, 5.0/my.config.n_points)
         y_values = np.exp(-x_values) * np.cos(2*np.pi*x_values)
-
         data = {'x': x_values.tolist(),
                   'y': y_values.tolist(),
                   'type': my.config.chart_type,
                    'chart_txt':my.config.chart_txt}
-
         data_plot = {
                 'name':'[DEMO] JS charts',
-                'type':'JScharts',
+                'type':'JS charts',
                 'w':12, 'h':15,
                 'data':data}
-
+       
         # Check if window was defined
-
-        # Native Python worker
-        if api.TAG == "nativePy":
-
-            if self.windowId is None:
-                self.windowId = await api.createWindow(data_plot)
-                print(f'New window with ID: {self.windowId}')
-
-            else:
-                print(f'Update window with ID: {self.windowId}')
-
-                try:
-                    await api.updateWindow(id=self.windowId,data=data)
-
-                except:
-                   self.windowId = await api.createWindow(data_plot)
-                   print(f'Could not print to old window. New window with ID: {self.windowId}')
-
-
-        # Web Python worker
+        if self.windowId is None:
+            api.createWindow(data_plot).then(self.set_window)
         else:
-            api.createWindow(data_plot).then(print)
+            #api.updateWindow(id=self.windowId,data=data)
+            #api.updateWindow({'id':self.windowId},{'data':data}) 
+            api.updateWindow({'id':self.windowId,'data':data}) 
 
 api.export(ImJoyPlugin())
 </script>
