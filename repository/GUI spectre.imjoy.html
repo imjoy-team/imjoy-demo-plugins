@@ -1,0 +1,218 @@
+﻿
+<docs lang="markdown">
+Plugin demonstrates how to build a user interface that interacts with Python
+to perform calculations.
+
+Interface is build with [**spectre.css**](https://picturepan2.github.io/spectre/index.html)
+"A Lightweight, Responsive and Modern CSS Framework"
+
+</docs>
+
+<config lang="json">
+{
+  "name": "GUI spectre",
+  "mode": "window",
+  "tags": [],
+  "ui": "User interface interacts with Python.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "describe your plugin here.",
+  "icon": "tv",
+  "inputs": null,
+  "outputs": null,
+  "requirements": ["https://cdn.plot.ly/plotly-latest.min.js",
+                   "https://unpkg.com/spectre.css/dist/spectre.min.css",
+                   "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
+                   "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"],
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:GUI PyWorker"],
+  "defaults": {"w": 12, "h": 25}
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  async setup() {
+
+    this.noise_scale = 2 / 100;
+
+    // Button "Calculate and Plot"
+    document.getElementById('btn_plot').onclick = () => {
+      this.calc_plot(
+        document.getElementById('n_points').value,
+        document.getElementById('math_op').value
+      )
+    };
+
+    // Button "Add noise"
+    document.getElementById('btn_noise').onclick = () => {
+      this.noise_plot(
+        document.getElementById('scale_slider').value * this.noise_scale
+      )
+    };
+
+    // Slider for noise scale
+    document.getElementById('scale_slider').oninput = () => {
+      this.set_slider_text(document.getElementById('scale_slider').value)
+    };
+
+  }
+
+
+  // Function called upon click "Calculate and Plot"
+  calc_plot(n_points, math_op) {
+
+    api.call('GUI PyWorker', 'calc_results', {
+      'npoints': n_points,
+      'math_op': math_op,
+      'callback': this.callback_plot,
+      'chart_id': 'chart'
+    });
+    document.getElementById("btn_noise").disabled = false;
+  }
+
+  // Function called upon click "Add noise"
+  noise_plot(scale) {
+    console.log('test')
+    api.call('GUI PyWorker', 'add_noise', {
+      'scale': scale,
+      'callback': this.callback_plot,
+      'chart_id': 'chartSmooth'
+    });
+  }
+
+  // Callback to plot data in the interface
+  callback_plot(data_plot) {
+
+    console.log(data_plot);
+    // Construct data input for plotly
+    // Supported modes:  'markers','lines+markers', 'lines
+    var n_y = data_plot["y"].length
+    var data = [];
+    for (var i = 0; i < n_y; i++) {
+      var trace = {
+        x: data_plot["x"],
+        y: data_plot["y"][i],
+        type: 'scatter',
+        mode: data_plot["mode"][i],
+        name: data_plot["name"][i]
+      }
+      data.push(trace);
+    };
+    console.log(data);
+
+    // Plotly call
+    var myPlot = document.getElementById('chart');
+    var layout = {
+      hovermode: 'closest',
+      title: 'Click on Points to show data properties'
+    };
+    Plotly.newPlot('chart', data, layout, {
+      responsive: true
+    });
+
+    myPlot.on('plotly_click', function(data) {
+      var pts = '';
+      for (var i = 0; i < data.points.length; i++) {
+        pts = 'x = ' + data.points[i].x + '\ny = ' +
+          data.points[i].y.toPrecision(4) + '\n\n';
+      }
+      api.alert('Closest point clicked:\n\n' + pts);
+    });
+  }
+
+  set_slider_text(value) {
+    var num = value * this.noise_scale;
+    document.getElementById("scale_txt").innerHTML = num.toFixed(2);
+  }
+
+  run(my) {
+    console.log('running in the plugin ', my)
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+ <div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <section class="navbar-section">
+      <a href="https://imjoy.io/docs/#/" class="btn btn-link">Docs</a>
+    </section>
+    <section class="navbar-center">
+      <!-- centered logo or brand -->
+    </section>
+    <section class="navbar-section">
+      <a href="https://github.com/oeway/imjoy" class="btn btn-link">GitHub</a>
+    </section>
+  </header>
+
+  <!-- hero -->
+  <div class="hero hero-sm bg-dark">
+    <div class="hero-body">
+      <p>GUI build with Spectre illustrating how to interact with Python.</p>
+    </div>
+  </div>
+
+  <!-- Specify plot -->
+  <br>
+  <div class="docs-demo columns">
+
+    <div class="column col-1 col-lg-<1-12>"></div>
+    <div class="column col-5 col-lg-<1-12>">
+      <div class="input-group">
+        <span class="input-group-addon">Math operation</span>
+        <select class="form-select" id="math_op">
+          <option>Sine</option>
+          <option>Exponential</option>
+          <option>Log10</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="column col-1 col-lg-<1-12>"></div>
+    <div class="col-3 col-lg-<1-12>">
+      <label class="form-label" for="n_points">Number data points</label>
+    </div>
+
+    <div class="col-1 col-lg-<1-12>">
+      <input class="form-input" type="text" id="n_points" value="50">
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Data generation -->
+  <div class="docs-demo columns">
+    <div class="column col-1 col-lg-<1-12>"></div>
+    <div class="col-3 col-lg-<1-12>">
+      <button class="btn btn-primary" id="btn_plot">Calculate and Plot</button>
+    </div>
+    <div class="col-3 col-lg-<1-12>">
+      <button class="btn btn-primary" id="btn_noise" disabled>Add noise and Plot</button>
+    </div>
+    <div class="col-3 col-lg-<1-12>">
+      <input class="slider" id="scale_slider" type="range" min="0" max="100" value="50">
+    </div>
+    <div class="col-1 col-lg-<1-12>">
+      <p id="scale_txt">1</p>
+    </div>
+  </div>
+
+  <br>
+
+  <br>
+  <div>
+    <div id="chart"></div>
+  </div>
+
+</div>
+
+</window>
+
+<style lang="css">
+
+</style>

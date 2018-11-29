@@ -1,0 +1,225 @@
+﻿<docs lang="markdown">
+Uses w3.css to render a user interface. We use many of the excellent examples such as
+  1. [Buttons](https://www.w3schools.com/w3css/w3css_buttons.asp)
+  0. [Grids](https://www.w3schools.com/w3css/w3css_grid.asp)
+  0. [Tabs](https://www.w3schools.com/w3css/w3css_tabulators.asp), and specifically [tabs in a grid](https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_tabulators_grid&stacked=h)
+</docs>
+
+<config lang="json">
+{
+  "name": "GUI w3",
+  "mode": "window",
+  "tags": [],
+  "ui": "UI for Untitled Plugin",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "description": "describe your plugin here.",
+  "icon": "tv",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements":[
+        "https://cdn.plot.ly/plotly-latest.min.js",
+        "https://www.w3schools.com/w3css/4/w3.css",
+        "https://www.w3schools.com/lib/w3-theme-indigo.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"],
+  "dependencies": [],
+  "defaults": {"w": 15, "h": 25}
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  async setup() {
+
+    // Button "Calculate and Plot"
+    document.getElementById('btn_plot').onclick = () => {
+      api.call('GUI PyWorker', 'calc_results', {
+        'npoints': document.getElementById('n_points').value,
+        'math_op': document.getElementById('math_op').value,
+        'callback': this.callback_plot,
+        'chart_id': 'chartSmooth'
+      });
+
+      document.getElementById("btn_noise").disabled = false;
+    };
+
+    // Button "Add noise and plot"
+    document.getElementById('btn_noise').onclick = () => {
+
+      api.call('GUI PyWorker', 'add_noise', {
+        'scale': document.getElementById('scale_slider').value,
+        'callback': this.callback_plot,
+        'chart_id': 'chartNoisy'
+      });
+
+    };
+
+    // Slider for noise
+    document.getElementById('scale_slider').oninput = () => {
+      var num = document.getElementById('scale_slider').value * 1;
+      document.getElementById("scale_txt").innerHTML = num.toFixed(2);
+
+    };
+
+    // Button for tabs with different plots
+    document.getElementById('btn_raw').onclick = () => {
+      this.displayPlot(event, "Smooth curve")
+    }
+    document.getElementById('btn_noisy').onclick = () => {
+      this.displayPlot(event, "Noisy curve")
+    }
+  }
+
+
+  // Change tab with plot
+  displayPlot(evt, plotName) {
+
+    var i, x, tablinks;
+
+    x = document.getElementsByClassName("resultplots");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(plotName).style.display = "block";
+
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+    }
+    evt.currentTarget.firstElementChild.className += " w3-border-red";
+  }
+
+
+  // Callback to plot data in the interface
+  callback_plot(data_plot) {
+
+    var chart_id = data_plot["chart_id"]
+
+    // Construct data input for plotly
+    // Supported modes:  'markers','lines+markers', 'lines
+    var n_y = data_plot["y"].length
+    var data = [];
+    for (var i = 0; i < n_y; i++) {
+      var trace = {
+        x: data_plot["x"],
+        y: data_plot["y"][i],
+        type: 'scatter',
+        mode: data_plot["mode"][i],
+        name: data_plot["name"][i]
+      }
+      data.push(trace);
+    };
+    console.log(data);
+
+
+    // Plotly call
+    var layout = {
+      hovermode: 'closest',
+      title: 'Click on Points to show data properties'
+    };
+    Plotly.newPlot(chart_id, data, layout, {
+      responsive: true
+    });
+
+    var myPlot = document.getElementById(chart_id);
+    myPlot.on('plotly_click', function(data) {
+      var pts = '';
+      for (var i = 0; i < data.points.length; i++) {
+        pts = 'x = ' + data.points[i].x + '\ny = ' +
+          data.points[i].y.toPrecision(4) + '\n\n';
+      }
+      api.alert('Closest point clicked:\n\n' + pts);
+    });
+
+    // Select appropriate tab
+    switch (chart_id) {
+      case "chartSmooth":
+        document.getElementById("btn_raw").click();
+        break;
+      case "chartNoisy":
+        document.getElementById("btn_noisy").click();
+        break;
+    }
+  }
+
+  run(my) {}
+}
+
+api.export(new ImJoyPlugin())
+
+
+</script>
+<window lang="html">
+  <div>
+
+    <!–– Header bar ––>
+    <div class="w3-panel w3-padding-16 w3-dark-grey">
+      <p>GUI built with W3.css</p>
+    </div>
+
+    <!–– Row with math operation and number of data points ––>
+    <div class="w3-cell-row">
+      <div class="w3-container w3-blue w3-round w3-cell-middle">
+        <p>Math operation</p>
+      </div>
+      <div class="w3-container w3-cell">
+        <select class="w3-select" name="option" id="math_op">
+          <option value="Sine">Sine</option>
+          <option value="Exponential">Exponential</option>
+          <option value="Log10">Log10</option>
+        </select>
+      </div>
+      <div class="w3-container w3-blue w3-round  w3-cell-middle">
+        <p>Number of data points</p>
+      </div>
+      <div class="w3-container  w3-round w3-cell">
+        <input class="w3-input w3-border" id="n_points" type="number" value=50 min=0>
+      </div>
+    </div>
+    <br>
+
+    <!–– Row with buttons ––>
+    <div class="w3-row">
+      <div class="w3-col m6 w3-center">
+        <button class="w3-btn w3-indigo w3-round" id="btn_plot">Calculate & Plot</button>
+      </div>
+      <div class="w3-col m3  w3-center">
+        <button class="w3-btn  w3-indigo w3-round" id="btn_noise">Add noise & Plot</button>
+      </div>
+      <div class="w3-col m3  w3-center">
+        <input type="range" id="scale_slider" name="noise" min="0" max="2" step="0.05" value="1">
+        <label id="scale_txt" for="noise">1</label>
+      </div>
+    </div>
+    <br>
+
+    <!–– Tabs ––>
+    <div class="w3-container">
+
+      <div class="w3-row">
+        <a href="javascript:void(0)" id="btn_raw">
+          <div class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Smooth curve</div>
+        </a>
+        <a href="javascript:void(0)" id="btn_noisy">
+          <div class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Noisy curve</div>
+        </a>
+      </div>
+
+      <div id="Smooth curve" class="w3-container resultplots" style="display:none">
+        <div id="chartSmooth"></div>
+      </div>
+
+      <div id="Noisy curve" class="w3-container resultplots" style="display:none">
+        <div id="chartNoisy"></div>
+      </div>
+
+    </div>
+
+  </div>
+</window>
+
+
+<style lang="css">
+</style>

@@ -45,7 +45,7 @@
    "uri": "GUI PyWorker.imjoy.html"
   },
   {
-   "name": "GUI",
+   "name": "GUI spectre",
    "mode": "window",
    "tags": [],
    "ui": "User interface interacts with Python.",
@@ -68,7 +68,32 @@
     "w": 12,
     "h": 25
    },
-   "uri": "GUI.imjoy.html"
+   "uri": "GUI spectre.imjoy.html"
+  },
+  {
+   "name": "GUI w3",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "icon": "tv",
+   "inputs": null,
+   "outputs": null,
+   "env": "",
+   "requirements": [
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://www.w3schools.com/w3css/4/w3.css",
+    "https://www.w3schools.com/lib/w3-theme-indigo.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 15,
+    "h": 25
+   },
+   "uri": "GUI w3.imjoy.html"
   },
   {
    "name": "JS charts PyWorker",

@@ -58,7 +58,8 @@ class ImJoyPlugin():
         callback_fun({'x':x.tolist(),
                       'y':[y.tolist()],
                       'mode':['line'],
-                      'name':['data']})
+                      'name':['data'],
+                      'chart_id': data['chart_id']})
 
 
     def add_noise(self,data):
@@ -75,29 +76,12 @@ class ImJoyPlugin():
                      'y':[self.y_values.tolist(),
                           self.y_noise.tolist()],
                      'mode':['marker+line','line'],
-                     'name':['raw','noisy']}
+                     'name':['raw','noisy'],
+                     'chart_id': data['chart_id']}
 
         #  callback
         data['callback'](data_plot)
 
-
-
-    # Function to fit data
-    def fit_results(self,data):
-
-        # Polynomial fit
-        y_fit = np.polyfit(self.x_values, self.y_values,10)
-        self.y_fit = y_fit
-
-        # Plot results
-        data_plot = {'x':self.x_values.tolist(),
-                     'y':(self.y_values.tolist(),
-                          self.y_fit.tolist()),
-                     'mode':('marker+line','line'),
-                     'name':('data','fit')}
-
-        #  callback
-        data['callback'](data_plot)
 
 api.export(ImJoyPlugin())
 </script>
