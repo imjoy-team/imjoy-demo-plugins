@@ -2,7 +2,7 @@
  "name": "ImJoy Demos",
  "description": "A set of demo plugins provided by ImJoy.io.",
  "version": "0.2.0",
- "uri_root": "/repository",
+ "uri_root": "",
  "plugins": [
   {
    "name": "3D Demos",
@@ -16,7 +16,7 @@
    "inputs": null,
    "outputs": null,
    "dependencies": [],
-   "uri": "3dDemos.imjoy.html"
+   "uri": "demos/3dDemos.imjoy.html"
   },
   {
    "name": "GUI PyWorker",
@@ -42,7 +42,7 @@
     "numpy"
    ],
    "dependencies": [],
-   "uri": "GUI PyWorker.imjoy.html"
+   "uri": "demos/GUI PyWorker.imjoy.html"
   },
   {
    "name": "GUI spectre",
@@ -68,7 +68,7 @@
     "w": 12,
     "h": 25
    },
-   "uri": "GUI spectre.imjoy.html"
+   "uri": "demos/GUI spectre.imjoy.html"
   },
   {
    "name": "GUI w3",
@@ -88,12 +88,14 @@
     "https://www.w3schools.com/lib/w3-theme-indigo.css",
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
    ],
-   "dependencies": [],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:GUI PyWorker"
+   ],
    "defaults": {
     "w": 15,
     "h": 25
    },
-   "uri": "GUI w3.imjoy.html"
+   "uri": "demos/GUI w3.imjoy.html"
   },
   {
    "name": "JS charts PyWorker",
@@ -120,7 +122,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:JS charts"
    ],
-   "uri": "JS charts PyWorker.imjoy.html"
+   "uri": "demos/JS charts PyWorker.imjoy.html"
   },
   {
    "name": "JS charts WebPython",
@@ -147,7 +149,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:JS charts"
    ],
-   "uri": "JS charts WebPython.imjoy.html"
+   "uri": "demos/JS charts WebPython.imjoy.html"
   },
   {
    "name": "JS charts",
@@ -173,7 +175,7 @@
     "w": 10,
     "h": 20
    },
-   "uri": "JS charts.imjoy.html"
+   "uri": "demos/JS charts.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
@@ -209,7 +211,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
-   "uri": "TestWebPythonPlugin.imjoy.html"
+   "uri": "demos/TestWebPythonPlugin.imjoy.html"
   },
   {
    "name": "Handlebars Demo",
@@ -226,7 +228,7 @@
     "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
    ],
    "dependencies": [],
-   "uri": "handlebarsDemo.imjoy.html"
+   "uri": "demos/handlebarsDemo.imjoy.html"
   },
   {
    "name": "Python Demo Plugin",
@@ -246,7 +248,7 @@
    ],
    "cmd": "python",
    "dependencies": [],
-   "uri": "pythonDemoPlugin.imjoy.html"
+   "uri": "demos/pythonDemoPlugin.imjoy.html"
   },
   {
    "name": "showDialog Demo",
@@ -260,7 +262,7 @@
    "outputs": null,
    "icon": "color_lens",
    "dependencies": [],
-   "uri": "showDialog.imjoy.html"
+   "uri": "demos/showDialog.imjoy.html"
   },
   {
    "name": "tSNE",
@@ -279,7 +281,7 @@
    ],
    "dependencies": [],
    "disabled": true,
-   "uri": "tSNE.imjoy.html"
+   "uri": "demos/tSNE.imjoy.html"
   },
   {
    "name": "tensorTest",
@@ -297,7 +299,7 @@
     "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"
    ],
    "dependencies": [],
-   "uri": "tensorTest.imjoy.html"
+   "uri": "demos/tensorTest.imjoy.html"
   },
   {
    "name": "Test Webworker Plugin",
@@ -333,7 +335,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
-   "uri": "testWebworkerPlugin.imjoy.html"
+   "uri": "demos/testWebworkerPlugin.imjoy.html"
   },
   {
    "name": "Test Window Plugin",
@@ -347,7 +349,7 @@
    "inputs": null,
    "outputs": null,
    "dependencies": [],
-   "uri": "testWindowPlugin.imjoy.html"
+   "uri": "demos/testWindowPlugin.imjoy.html"
   },
   {
    "name": "Three.js Demo",
@@ -369,7 +371,7 @@
    ],
    "dependencies": [],
    "disabled": true,
-   "uri": "threejsDemo.imjoy.html"
+   "uri": "demos/threejsDemo.imjoy.html"
   }
  ],
  "collections": [
