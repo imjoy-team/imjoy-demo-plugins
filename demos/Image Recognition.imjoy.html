@@ -1,4 +1,4 @@
-﻿
+
 <docs lang="markdown">
 A pretrained MobileNet image classifier built with Tensorflow.js.
 
@@ -41,13 +41,15 @@ class ImJoyPlugin {
     // Display image when a file is selected.
     const fileInput = document.getElementById("file-input");
     const targetImg = document.getElementById("target");
-    fileInput.onchange = ()=>{
+    const showImageFile = ()=>{
         var fr=new FileReader();
         // when image is loaded, set the src of the image where you want to display it
         fr.onload = function(e) { targetImg.src = this.result; };
         // fill fr with image data
         fr.readAsDataURL(fileInput.files[0]);
     }
+    fileInput.addEventListener("change", showImageFile, true);
+
     // Load the model.
     const statusElement = document.getElementById("status");
     statusElement.innerHTML = 'Loading pretrained model...';
