@@ -19,6 +19,86 @@
    "uri": "demos/3dDemos.imjoy.html"
   },
   {
+   "name": "Charts JS window",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "Window showing JS charts.",
+   "icon": "photo",
+   "inputs": null,
+   "outputs": null,
+   "runnable": false,
+   "requirements": [
+    "https://d3js.org/d3.v5.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 10,
+    "h": 20
+   },
+   "uri": "demos/Charts JS window.imjoy.html"
+  },
+  {
+   "name": "Charts PyWorker",
+   "mode": "pyworker",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "tags": [],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js','.png'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:Charts JS window"
+   ],
+   "uri": "demos/Charts PyWorker.imjoy.html"
+  },
+  {
+   "name": "Charts WebPython",
+   "mode": "webpython",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "describe your plugin here.",
+   "tags": [],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:Charts JS window"
+   ],
+   "uri": "demos/Charts WebPython.imjoy.html"
+  },
+  {
    "name": "GUI PyWorker",
    "mode": {
     "webPy": "webpython",
@@ -110,7 +190,7 @@
    "outputs": null,
    "env": "",
    "requirements": [
-    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.7",
+    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0",
     "https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@0.1.1"
    ],
    "dependencies": [],
@@ -119,86 +199,6 @@
     "h": 10
    },
    "uri": "demos/Image Recognition.imjoy.html"
-  },
-  {
-   "name": "JS charts PyWorker",
-   "mode": "pyworker",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "describe your plugin here.",
-   "tags": [],
-   "ui": [
-    "Try differen JS chart libraries.",
-    "<hr>",
-    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
-    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
-    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
-   ],
-   "inputs": null,
-   "outputs": null,
-   "flags": [],
-   "icon": "swap_horiz",
-   "env": null,
-   "requirements": [
-    "numpy"
-   ],
-   "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:JS charts"
-   ],
-   "uri": "demos/JS charts PyWorker.imjoy.html"
-  },
-  {
-   "name": "JS charts WebPython",
-   "mode": "webpython",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "describe your plugin here.",
-   "tags": [],
-   "ui": [
-    "Try differen JS chart libraries.",
-    "<hr>",
-    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
-    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
-    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
-   ],
-   "inputs": null,
-   "outputs": null,
-   "flags": [],
-   "icon": "swap_horiz",
-   "env": null,
-   "requirements": [
-    "numpy"
-   ],
-   "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:JS charts"
-   ],
-   "uri": "demos/JS charts WebPython.imjoy.html"
-  },
-  {
-   "name": "JS charts",
-   "mode": "window",
-   "tags": [],
-   "ui": "UI for Untitled Plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.0",
-   "description": "Window showing JS charts.",
-   "icon": "photo",
-   "inputs": null,
-   "outputs": null,
-   "runnable": false,
-   "requirements": [
-    "https://d3js.org/d3.v5.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
-   ],
-   "dependencies": [],
-   "defaults": {
-    "w": 10,
-    "h": 20
-   },
-   "uri": "demos/JS charts.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
@@ -395,6 +395,32 @@
    "dependencies": [],
    "disabled": true,
    "uri": "demos/threejsDemo.imjoy.html"
+  },
+  {
+   "name": "JS charts",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "Window showing JS charts.",
+   "icon": "photo",
+   "inputs": null,
+   "outputs": null,
+   "runnable": false,
+   "requirements": [
+    "https://d3js.org/d3.v5.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 10,
+    "h": 20
+   },
+   "uri": "repository/JS charts.imjoy.html"
   }
  ],
  "collections": []

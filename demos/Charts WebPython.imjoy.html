@@ -12,7 +12,7 @@ More information about these libraries can be found here
 
 <config lang="json">
 {
-  "name": "JS charts WebPython",
+  "name": "Charts WebPython",
   "mode": "webpython",
   "version": "0.1.0",
   "api_version": "0.1.1",
@@ -31,7 +31,7 @@ More information about these libraries can be found here
   "icon": "swap_horiz",
   "env": null,
   "requirements": ["numpy"],
-  "dependencies": ["oeway/ImJoy-Demo-Plugins:JS charts"]
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:Charts JS window"]
 }
 </config>
 
@@ -60,14 +60,14 @@ class ImJoyPlugin():
                 'type':'JS charts',
                 'w':12, 'h':15,
                 'data':data}
-       
+
         # Check if window was defined
         if self.windowId is None:
             api.createWindow(data_plot).then(self.set_window)
         else:
             #api.updateWindow(id=self.windowId,data=data)
-            #api.updateWindow({'id':self.windowId},{'data':data}) 
-            api.updateWindow({'id':self.windowId,'data':data}) 
+            #api.updateWindow({'id':self.windowId},{'data':data})
+            api.updateWindow({'id':self.windowId,'data':data})
 
 api.export(ImJoyPlugin())
 </script>

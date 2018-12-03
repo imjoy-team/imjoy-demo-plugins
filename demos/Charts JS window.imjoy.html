@@ -1,0 +1,146 @@
+﻿<docs lang="markdown">
+Window plugin to show data received from a Python worker in a JS chart.
+
+Please note that when run by itself the plugin does not display anything.
+</docs>
+
+<config lang="json">
+{
+  "name": "Charts JS window",
+  "mode": "window",
+  "tags": [],
+  "ui": "UI for Untitled Plugin",
+  "version": "0.1.0",
+  "api_version": "0.1.0",
+  "description": "Window showing JS charts.",
+  "icon": "photo",
+  "inputs": null,
+  "outputs": null,
+  "runnable": false,
+  "requirements": ["https://d3js.org/d3.v5.min.js",
+                   "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
+                   "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+                   "https://cdn.plot.ly/plotly-latest.min.js",
+                   "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"],
+  "dependencies": [],
+  "defaults": {"w": 10, "h":20}
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  async setup() {
+
+    };
+
+  run(my) {
+
+   // Set text
+   console.log(my.data)
+   document.getElementById("txt").innerHTML = my.data.chart_txt;
+
+   // Plot with selected library
+   switch( my.data.type) {
+
+        // C3 library
+        case 'C3':
+            console.log(' Creating C3 graph ')
+
+            // Add identifier to array
+            my.data.x.unshift('x')
+            my.data.y.unshift('data1')
+
+            var chart = c3.generate({
+                bindto: '#chart',
+                data: {
+                    x: 'x',
+                    columns: [
+                        my.data.x,
+                        my.data.y,
+                    ]
+                }
+            });
+            break;
+
+
+       // Plotly library
+       case 'Plotly':
+            console.log(' Creating Plotly graph ')
+
+            var myPlot = document.getElementById('chart'),
+                data = [ { x:my.data.x,
+                           y:my.data.y,
+                           type:'scatter',
+                           mode:'lines+markers',
+                           marker:{size:5} } ],
+                layout = {
+                        hovermode:'closest',
+                        title:'Click on points to show dialog' };
+
+            Plotly.newPlot('chart', data, layout,{responsive: true});
+
+            myPlot.on('plotly_click', function(data){
+                var pts = '';
+                for(var i=0; i < data.points.length; i++){
+                        pts = 'x = '+data.points[i].x +'\ny = '+
+                            data.points[i].y.toPrecision(4) + '\n\n';
+                    }
+                    api.alert('Closest point clicked:\n\n'+pts);
+                });
+            break;
+
+
+
+        // Chart.js
+        case 'Chart.js':
+            console.log(' Creating Chart.js graph ')
+
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: my.data.x,
+                    datasets: [{
+                        label: "DEMO Data",
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: my.data.y,
+                    }]
+                },
+
+                // Configuration options go here
+                options: {responsive:true}
+
+                });
+
+
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = 'green';
+            ctx.fillRect(10, 10, 100, 100);
+
+
+            break;
+
+    }
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+    <div>
+        <div>
+            <p id="txt"> </p>
+        </div>
+       <div id="chart"></div>
+       <canvas id="canvas"></canvas>
+    </div>
+
+</window>
