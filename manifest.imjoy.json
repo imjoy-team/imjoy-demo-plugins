@@ -395,32 +395,6 @@
    "dependencies": [],
    "disabled": true,
    "uri": "demos/threejsDemo.imjoy.html"
-  },
-  {
-   "name": "JS charts",
-   "mode": "window",
-   "tags": [],
-   "ui": "UI for Untitled Plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.0",
-   "description": "Window showing JS charts.",
-   "icon": "photo",
-   "inputs": null,
-   "outputs": null,
-   "runnable": false,
-   "requirements": [
-    "https://d3js.org/d3.v5.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
-   ],
-   "dependencies": [],
-   "defaults": {
-    "w": 10,
-    "h": 20
-   },
-   "uri": "repository/JS charts.imjoy.html"
   }
  ],
  "collections": []
