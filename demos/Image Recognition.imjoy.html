@@ -58,6 +58,7 @@ class ImJoyPlugin {
     drawImage('https://static.imjoy.io/img/cat.jpg')
 
     const readImageFile = ()=>{
+        console.log('reading...')
         return new Promise((resolve, reject)=>{
             var fr = new FileReader();
             // when image is loaded, set the src of the image where you want to display it
@@ -67,6 +68,7 @@ class ImJoyPlugin {
             fr.onerror = reject
             // fill fr with image data
             fr.readAsDataURL(fileInput.files[0]);
+            this.currentFile = fileInput.files[0]
         })
     }
     fileInput.addEventListener("change", readImageFile, true);
@@ -85,7 +87,7 @@ class ImJoyPlugin {
 
     // Read the file (just for mobile device)
     const fileInput = document.getElementById("file-input");
-    if(fileInput.files && fileInput.files.length>0){
+    if(fileInput.files[0] !== this.currentFile ){
         await this.readImageFile()
     }
     
