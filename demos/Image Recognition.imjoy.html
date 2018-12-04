@@ -60,14 +60,21 @@ class ImJoyPlugin {
 
     const readImageFile = ()=>{
         return new Promise((resolve, reject)=>{
-            var fr = new FileReader();
-            // when image is loaded, set the src of the image where you want to display it
-            fr.onload = function(e) {
-                drawImage(e.target.result, resolve)
-            };
-            fr.onerror = reject
-            // fill fr with image data
-            fr.readAsDataURL(fileInput.files[0]);
+            const U = window.URL || window.webkitURL;
+            if(U.createObjectURL){
+                drawImage(U.createObjectURL(fileInput.files[0]))
+                resolve()
+            }
+            else{
+                var fr = new FileReader();
+                // when image is loaded, set the src of the image where you want to display it
+                fr.onload = function(e) {
+                    drawImage(e.target.result, resolve)
+                };
+                fr.onerror = reject
+                // fill fr with image data
+                fr.readAsDataURL(fileInput.files[0]);
+            }
             this.currentFile = fileInput.files[0]
         })
     }
