@@ -35,12 +35,9 @@ class ImJoyPlugin {
     predictBtn.onclick = ()=>{
       this.predict()
     }
-    // hide the predict button for now
-    predictBtn.style.display = "none";
 
     // Display image when a file is selected.
     const fileInput = document.getElementById("file-input");
-    fileInput.style.display = "none";
     const canvas = document.getElementById("input-canvas");
     const drawImage = (url, callback)=>{
         var img = new Image()
@@ -57,7 +54,9 @@ class ImJoyPlugin {
     }
     //load a preset image
     drawImage('https://static.imjoy.io/img/cat.jpg')
-
+    canvas.addEventListener('click', () => {
+   console.log('canvas click');
+});
     const readImageFile = ()=>{
         return new Promise((resolve, reject)=>{
             const U = window.URL || window.webkitURL;
@@ -75,10 +74,13 @@ class ImJoyPlugin {
                 // fill fr with image data
                 fr.readAsDataURL(fileInput.files[0]);
             }
-            this.currentFile = fileInput.files[0]
         })
     }
-    fileInput.addEventListener("change", readImageFile, true);
+    fileInput.addEventListener("change", ()=>{
+        readImageFile().then(()=>{
+            this.predict();
+        })
+    }, true);
     this.readImageFile = readImageFile;
 
     // Load the model.
@@ -91,14 +93,7 @@ class ImJoyPlugin {
     fileInput.style.display = "inline";
   }
 
-  async predict(){
-
-    // Read the file (just for mobile device)
-    const fileInput = document.getElementById("file-input");
-    if(fileInput.files[0] !== this.currentFile ){
-        await this.readImageFile()
-    }
-    
+  async predict(){    
     const canvas = document.getElementById('input-canvas');
     // Classify the image.
     const predictions = await this.model.classify(canvas)
@@ -120,8 +115,8 @@ api.export(new ImJoyPlugin())
 <window lang="html">
   <div>
     <p id="status"></p>
-    <input class="form-input" id="file-input" accept="image/*" capture="camera" type="file"/>
-    <button class="form-input btn" id="predict-btn">Predict</button>
+    <input class="form-input" id="file-input" style="display: none;" accept="image/*" capture="camera" type="file"/>
+    <button class="form-input btn" style="display: none;" id="predict-btn">Predict</button>
     <canvas id="input-canvas" style="width: 100%; object-fit: cover;"></canvas>
   </div>
 </window>
