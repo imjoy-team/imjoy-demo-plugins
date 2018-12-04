@@ -40,29 +40,60 @@ class ImJoyPlugin {
 
     // Display image when a file is selected.
     const fileInput = document.getElementById("file-input");
-    const targetImg = document.getElementById("target");
-    const showImageFile = ()=>{
-        var fr=new FileReader();
-        // when image is loaded, set the src of the image where you want to display it
-        fr.onload = function(e) { targetImg.src = this.result; };
-        // fill fr with image data
-        fr.readAsDataURL(fileInput.files[0]);
+    const canvas = document.getElementById("input-canvas");
+    const drawImage = (url, callback)=>{
+        var img = new Image()
+        img.crossOrigin = "anonymous"
+        img.onload = function(){
+            const ctx = canvas.getContext("2d");
+            canvas.width = Math.min(this.width, 512);
+            canvas.height= Math.min(this.height, parseInt(512*this.height/this.width), 1024);
+            // draw the img into canvas
+            ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+            if(callback) callback();
+        }
+        img.src = url;
     }
-    fileInput.addEventListener("change", showImageFile, true);
+    //load a preset image
+    drawImage('https://static.imjoy.io/img/cat.jpg')
+
+    const readImageFile = ()=>{
+        console.log('reading...')
+        return new Promise((resolve, reject)=>{
+            var fr = new FileReader();
+            // when image is loaded, set the src of the image where you want to display it
+            fr.onload = function(e) {
+                drawImage(e.target.result, resolve)
+            };
+            fr.onerror = reject
+            // fill fr with image data
+            fr.readAsDataURL(fileInput.files[0]);
+            this.currentFile = fileInput.files[0]
+        })
+    }
+    fileInput.addEventListener("change", readImageFile, true);
+    this.readImageFile = readImageFile;
 
     // Load the model.
     const statusElement = document.getElementById("status");
     statusElement.innerHTML = 'Loading pretrained model...';
     this.model = await mobilenet.load();
-    statusElement.innerHTML = 'Model loaded, please open an image (.png/.jpg) and click `Predict`.!';
+    statusElement.innerHTML = 'Model loaded, please open an image (.png/.jpg) and click `Predict`!';
     // display the predict button
     predictBtn.style.display = "inline";
   }
 
   async predict(){
-    const img = document.getElementById('target');
+
+    // Read the file (just for mobile device)
+    const fileInput = document.getElementById("file-input");
+    if(fileInput.files[0] !== this.currentFile ){
+        await this.readImageFile()
+    }
+    
+    const canvas = document.getElementById('input-canvas');
     // Classify the image.
-    const predictions = await this.model.classify(img)
+    const predictions = await this.model.classify(canvas)
     // Output the result
     console.log('Predictions: ', predictions);
     const result_string = `Top-1 Prediction: ${predictions[0].className} (${Math.round(predictions[0].probability*100)}%)`;
@@ -81,8 +112,8 @@ api.export(new ImJoyPlugin())
 <window lang="html">
   <div>
     <p id="status"></p>
-    <input class="form-input" id="file-input" type="file"/>
+    <input class="form-input" id="file-input" accept="image/*" capture="camera" type="file"/>
     <button class="form-input btn" id="predict-btn">Predict</button>
-    <img id="target" crossorigin="" src="https://static.imjoy.io/img/cat.jpg"></img>
+    <canvas id="input-canvas"></canvas>
   </div>
 </window>
