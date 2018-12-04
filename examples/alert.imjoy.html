@@ -1,0 +1,37 @@
+﻿
+<docs>
+Will show an alter dialog "Hello World."
+</docs>
+
+<config lang="json">
+{
+  "name": "alert",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Shows Hello world",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.alert()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+  }
+
+  run(my) {
+    api.alert("Hello World")
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+

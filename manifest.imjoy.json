@@ -395,6 +395,23 @@
    "dependencies": [],
    "disabled": true,
    "uri": "demos/threejsDemo.imjoy.html"
+  },
+  {
+   "name": "alert",
+   "mode": "webworker",
+   "tags": [],
+   "ui": "Shows Hello world",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "url": "",
+   "description": "Example for function api.alert()",
+   "icon": "help_outline",
+   "inputs": null,
+   "outputs": null,
+   "env": "",
+   "requirements": [],
+   "dependencies": [],
+   "uri": "examples/alert.imjoy.html"
   }
  ],
  "collections": []
