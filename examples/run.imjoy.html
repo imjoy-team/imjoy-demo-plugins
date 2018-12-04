@@ -1,43 +1,34 @@
 ﻿
 <docs>
-Will show an alter dialog "Hello World."
+Calls plugin "run" which shows an alert message "Hello world".
 </docs>
 
 <config lang="json">
 {
-  "name": "alert",
+  "name": "run",
   "mode": "webworker",
   "tags": [],
-  "ui": "Shows Hello world",
+  "ui": "Calls plugin that shows Hello world",
   "version": "0.1.0",
   "api_version": "0.1.1",
   "url": "",
-  "description": "Example for function api.alert()",
+  "description": "Example for function api.run()",
   "icon": "help_outline",
   "inputs": null,
   "outputs": null,
   "env": "",
   "requirements": [],
-  "dependencies": []
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:alert"]
 }
 </config>
 
 <script lang="javascript">
 class ImJoyPlugin {
-
-  // Setup function
   async setup() {
   }
 
-  // Plugin function
-  async show_alert(message){
-    api.alert(message)
-  }
-
-  // Main function - called when plugin is executed
   async run(my) {
-    console.log(my)
-    api.alert("Hello World")
+    api.run("alert")
   }
 }
 

@@ -1,0 +1,96 @@
+﻿
+<docs>
+Plugin with ops.
+</docs>
+
+<config lang="json">
+{
+  "name": "register",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Click on ops to run them.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.register()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup() {
+
+    // Register new op "Number": executed via main plugin "run" function
+    api.register({
+      name: "Numbers",
+      ui: [{
+        "Choose your favorite number": {
+          id: 'number',
+          type: 'number',
+          min: 0,
+          max: 100,
+          placeholder: 5
+        }
+      }],
+    })
+
+    // Register new op "Animals": with dedicated run and update function
+    api.register({
+      name: "Animals",
+      ui: [{
+        "Choose your favorite pet": {
+          id: 'animal',
+          type: 'choose',
+          options: ['dog', 'goldfish', 'tiger'],
+          placeholder: 'tiger'
+        }
+      }],
+      run: this.message_animal,
+      update: this.message_animal
+    })
+
+  };
+
+  // Plugin function to show message for favorite animal
+  message_animal(my) {
+    this.show_msg("My favorite animal is a " + my.config.animal + "!")
+  };
+
+  // Plugin function to show message
+  show_msg(message) {
+    api.alert(message)
+  };
+
+  // Run function of plugin
+  async run(my) {
+
+    console.log(my)
+
+    // Check where function call is combing from
+    switch (my.config.type) {
+
+      case 'Animals':
+        self.show_msg("My favorite animal is a " + my.config.animal + "!")
+        break;
+
+      case 'Numbers':
+        this.show_msg("My favorite number is " + my.config.number)
+        break;
+
+      default:
+        this.show_msg("Message created from the run function!")
+    }
+  };
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
