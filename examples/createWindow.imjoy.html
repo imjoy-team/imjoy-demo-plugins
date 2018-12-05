@@ -1,0 +1,56 @@
+﻿
+<docs>
+Demonstrate how to create and update a ImJoy window.
+</docs>
+
+<config lang="json">
+{
+  "name": "createWindow",
+  "mode": "webworker",
+  "tags": [],
+  "ui": [],
+  "version": "0.1.0",
+  "api_version": "0.1.0",
+  "description": "Demonstrates api.createWindow and api.updateWindow.",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": null,
+  "requirements": null,
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:Test Window Plugin"]
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+  }
+
+  async run(my) {
+
+    // Create a new window
+    const windowId =  await api.createWindow({
+            name: 'test window', 
+            type: 'WindowPlugin', 
+            w:10, h:10, 
+            data: {value: 'INITIATED!'}
+        })
+
+        await api.alert('Created a new window with id: '+windowId+'\n\n Will update this window when you click OK')
+
+        //Javascript
+        for(let i=0; i<= 20; i++){
+            api.updateWindow({
+                id: windowId,
+                name: 'test window', 
+                type: 'WindowPlugin', 
+                 w:10, h:10,  
+                data: {value: i}
+            })
+        }
+  }
+}
+
+
+api.export(new ImJoyPlugin())
+</script>

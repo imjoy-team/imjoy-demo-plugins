@@ -1,0 +1,52 @@
+﻿
+<docs lang="markdown">
+Window plugin that can be called from another plugin.
+</docs>
+
+<config lang="json">
+{
+  "name": "WindowPlugin",
+  "mode": "window",
+  "tags": [],
+  "ui": "Window plugin",
+  "version": "0.1.0",
+  "api_version": "0.1.0",
+  "description": "Window plugin that can be called.",
+  "icon": "extension",
+  "runnable": false,
+  "inputs": null,
+  "outputs": null,
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+  }
+
+  run(my) {
+    console.log('running the window plugin ', my.data)
+    const node = document.createElement("li");                 // Create a <li> node
+    const textnode = document.createTextNode('Received value: ' + my.data.value);         // Create a text node
+    node.appendChild(textnode);                              // Append the text to <li>
+    document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
+    if(my.data.callback) my.data.callback('hello from the window plugin')
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+    <p>
+      <h1> This is a simple window made with html </h1>
+    </p>
+    <div id="myList"></div>
+  </div>
+</window>
+
+<style lang="css">
+
+</style>

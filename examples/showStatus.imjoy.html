@@ -1,0 +1,46 @@
+﻿
+<docs>
+Shows status text in progressbar."
+</docs>
+
+<config lang="json">
+{
+  "name": "showStatus",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Updates ImJoy status bar.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.showStatus()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup(){
+  }
+
+  // Main function - called when plugin is executed
+  async run(my) {
+
+    await api.alert('Status well be set to "Initiated"')
+    await api.showStatus('Initiated')
+
+    await api.alert('Status well be set to "Finished!"')
+    await api.showStatus('Finished!')
+
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+

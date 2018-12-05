@@ -1,0 +1,54 @@
+﻿
+<docs>
+Shows usage of setConfig and getConfig.
+</docs>
+
+<config lang="json">
+{
+  "name": "setConfig",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Set config parameters",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.setConfig() and api.getConfig()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup() {
+  }
+
+  // Main function - called when plugin is executed
+  async run(my) {
+    const par_save = await api.getConfig('par_save')
+    await api.alert("Retrieved config value is: "+par_save)
+
+
+    // Show dialog to ask for favorite animal
+    try{
+        const result = await api.showDialog({
+            "name": "This is a dialog",
+            "ui": "Hey, please choose your favorite animal: {id:'str_store', type:'string', placeholder:'String to be stored!'}.",
+        })
+        // Show reply as an alert
+        await api.setConfig('par_save',result['str_store'])
+    }
+    // Executed when user presses cancel.
+    catch{};
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+

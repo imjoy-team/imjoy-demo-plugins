@@ -1,0 +1,57 @@
+﻿
+<docs>
+Shows dialog for ImJoy plugin.
+</docs>
+
+<config lang="json">
+{
+  "name": "showDialog",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Shows a dialog.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.showDialog()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup(){
+  }
+
+
+  // Main function - called when plugin is executed
+  async run(my) {
+
+        // Show dialog to ask for favorite animal
+        try{
+            
+            const result = await api.showDialog({
+                "name": "This is a dialog",
+                "ui": "Hey, please choose your favorite animal: {id:'animal', type:'choose', options:['dog', 'chicken','lion'], placeholder: 'dog'}.",
+            })
+
+            // Show reply as an alert
+            await api.alert("Your favorite animal is a " + result['animal'])
+        }
+
+        // Executed when user presses cancel.
+        catch{
+            await api.alert("user pressed cancel")
+        };
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+

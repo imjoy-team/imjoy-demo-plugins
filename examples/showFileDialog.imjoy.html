@@ -1,0 +1,48 @@
+﻿
+<docs>
+Shows ImJoy file dialog.
+</docs>
+
+<config lang="json">
+{
+  "name": "showFileDialog",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Shows a file dialog.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.showFileDialog()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup(){
+  }
+    
+  // Main function - called when plugin is executed
+  async run(my) {
+        
+         try{
+            const file_path = await api.showFileDialog()
+        
+            // Show reply as an alert
+            await api.alert("Selected file " + file_path)
+        }
+        catch{
+            await api.alert("User pressed cancel")
+        };
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>

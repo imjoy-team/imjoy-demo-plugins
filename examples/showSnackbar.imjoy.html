@@ -1,0 +1,41 @@
+﻿
+<docs>
+Shows ImJoy snackBar.
+</docs>
+
+<config lang="json">
+{
+  "name": "showSnackbar",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Shows a snackBar.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.showSnackbar()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup(){
+  }
+
+
+  // Main function - called when plugin is executed
+  async run(my) {
+    await api.showSnackbar('processing...')
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+

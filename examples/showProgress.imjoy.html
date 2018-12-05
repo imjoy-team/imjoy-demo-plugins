@@ -1,0 +1,47 @@
+﻿
+<docs>
+Shows progress in ImJoy progress bar.
+</docs>
+
+<config lang="json">
+{
+  "name": "showProgress",
+  "mode": "webworker",
+  "tags": [],
+  "ui": "Updates ImJoy progress bar.",
+  "version": "0.1.0",
+  "api_version": "0.1.1",
+  "url": "",
+  "description": "Example for function api.showProgress()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+
+  // Setup function
+  async setup(){
+  }
+
+
+  // Main function - called when plugin is executed
+  async run(my) {
+
+    for(let i=0; i<101; i++)
+        {
+            api.utils.sleep(0.02)
+            api.showProgress(i)
+        }
+
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
