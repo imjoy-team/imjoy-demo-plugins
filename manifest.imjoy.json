@@ -43,7 +43,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Charts JS window"
    ],
-   "uri": "demos/Charts WebPython.imjoy.html"
+   "uri": "demos/ChartsWebPython.imjoy.html"
   },
   {
    "name": "Charts JS window",
