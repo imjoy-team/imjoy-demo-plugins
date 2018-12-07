@@ -5,7 +5,7 @@
  "uri_root": "",
  "plugins": [
   {
-   "name": "3D Demos",
+   "name": "3D visualization",
    "mode": "window",
    "tags": [],
    "ui": "Demo: {id: 'demo', type:'choose', options: ['Sponza', 'Volume(vtk.js)'], placeholder: 'Volume(vtk.js)'}",
@@ -16,60 +16,7 @@
    "inputs": null,
    "outputs": null,
    "dependencies": [],
-   "uri": "demos/3dDemos.imjoy.html"
-  },
-  {
-   "name": "Charts JS window",
-   "mode": "window",
-   "tags": [],
-   "ui": "UI for Untitled Plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.0",
-   "description": "Window showing JS charts.",
-   "icon": "photo",
-   "inputs": null,
-   "outputs": null,
-   "runnable": false,
-   "requirements": [
-    "https://d3js.org/d3.v5.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
-   ],
-   "dependencies": [],
-   "defaults": {
-    "w": 10,
-    "h": 20
-   },
-   "uri": "demos/Charts JS window.imjoy.html"
-  },
-  {
-   "name": "Charts PyWorker",
-   "mode": "pyworker",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "PyWorker plugin sending data to window plugin to plot.",
-   "tags": [],
-   "ui": [
-    "Try differen JS chart libraries.",
-    "<hr>",
-    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js','.png'], placeholder: 'Plotly'}",
-    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
-    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
-   ],
-   "inputs": null,
-   "outputs": null,
-   "flags": [],
-   "icon": "swap_horiz",
-   "env": null,
-   "requirements": [
-    "numpy"
-   ],
-   "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:Charts JS window"
-   ],
-   "uri": "demos/Charts PyWorker.imjoy.html"
+   "uri": "demos/3DVisualization.imjoy.html"
   },
   {
    "name": "Charts WebPython",
@@ -99,6 +46,59 @@
    "uri": "demos/Charts WebPython.imjoy.html"
   },
   {
+   "name": "Charts JS window",
+   "mode": "window",
+   "tags": [],
+   "ui": "UI for Untitled Plugin",
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "Window showing JS charts.",
+   "icon": "photo",
+   "inputs": null,
+   "outputs": null,
+   "runnable": false,
+   "requirements": [
+    "https://d3js.org/d3.v5.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.8/c3.min.css",
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"
+   ],
+   "dependencies": [],
+   "defaults": {
+    "w": 10,
+    "h": 20
+   },
+   "uri": "demos/ChartsJSwindow.imjoy.html"
+  },
+  {
+   "name": "Charts PyWorker",
+   "mode": "pyworker",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "PyWorker plugin sending data to window plugin to plot.",
+   "tags": [],
+   "ui": [
+    "Try differen JS chart libraries.",
+    "<hr>",
+    "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js','.png'], placeholder: 'Plotly'}",
+    "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
+    "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
+   ],
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "swap_horiz",
+   "env": null,
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:Charts JS window"
+   ],
+   "uri": "demos/ChartsPyWorker.imjoy.html"
+  },
+  {
    "name": "GUI PyWorker",
    "mode": {
     "webPy": "webpython",
@@ -123,32 +123,6 @@
    ],
    "dependencies": [],
    "uri": "demos/GUI PyWorker.imjoy.html"
-  },
-  {
-   "name": "GUI spectre",
-   "mode": "window",
-   "tags": [],
-   "ui": "User interface interacting with Python.",
-   "version": "0.1.0",
-   "api_version": "0.1.1",
-   "description": "User interface interacting with Python.",
-   "icon": "tv",
-   "inputs": null,
-   "outputs": null,
-   "requirements": [
-    "https://cdn.plot.ly/plotly-latest.min.js",
-    "https://unpkg.com/spectre.css/dist/spectre.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
-    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
-   ],
-   "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:GUI PyWorker"
-   ],
-   "defaults": {
-    "w": 12,
-    "h": 25
-   },
-   "uri": "demos/GUI spectre.imjoy.html"
   },
   {
    "name": "GUI w3",
@@ -176,6 +150,32 @@
     "h": 25
    },
    "uri": "demos/GUI w3.imjoy.html"
+  },
+  {
+   "name": "GUI spectre",
+   "mode": "window",
+   "tags": [],
+   "ui": "User interface interacting with Python.",
+   "version": "0.1.0",
+   "api_version": "0.1.1",
+   "description": "User interface interacting with Python.",
+   "icon": "tv",
+   "inputs": null,
+   "outputs": null,
+   "requirements": [
+    "https://cdn.plot.ly/plotly-latest.min.js",
+    "https://unpkg.com/spectre.css/dist/spectre.min.css",
+    "https://unpkg.com/spectre.css/dist/spectre-exp.min.css",
+    "https://unpkg.com/spectre.css/dist/spectre-icons.min.css"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:GUI PyWorker"
+   ],
+   "defaults": {
+    "w": 12,
+    "h": 25
+   },
+   "uri": "demos/GUIspectre.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
@@ -214,13 +214,13 @@
    "uri": "demos/TestWebPythonPlugin.imjoy.html"
   },
   {
-   "name": "Handlebars Demo",
+   "name": "handlebars.js",
    "mode": "window",
    "tags": [],
    "ui": "",
    "version": "0.1.0",
    "api_version": "0.1.0",
-   "description": "This plugin demonstrates how handlebars can be used to generate HTML from a tempate and some data.",
+   "description": "Demonstrates how handlebars can be used to generate HTML from a tempate and some data.",
    "icon": "extension",
    "inputs": null,
    "outputs": null,
@@ -228,7 +228,7 @@
     "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
    ],
    "dependencies": [],
-   "uri": "demos/handlebarsDemo.imjoy.html"
+   "uri": "demos/handlebarsJS.imjoy.html"
   },
   {
    "name": "Python Demo Plugin",
@@ -352,7 +352,7 @@
    "uri": "demos/testWindowPlugin.imjoy.html"
   },
   {
-   "name": "Three.js Demo",
+   "name": "three.js",
    "mode": "window",
    "tags": [],
    "ui": null,
@@ -371,7 +371,7 @@
    ],
    "dependencies": [],
    "disabled": true,
-   "uri": "demos/threejsDemo.imjoy.html"
+   "uri": "demos/threeJS.imjoy.html"
   },
   {
    "name": "WindowPlugin",
