@@ -49,7 +49,7 @@
    "mode": "pyworker",
    "version": "0.1.0",
    "api_version": "0.1.1",
-   "description": "describe your plugin here.",
+   "description": "PyWorker plugin sending data to window plugin to plot.",
    "tags": [],
    "ui": [
     "Try differen JS chart libraries.",
@@ -76,7 +76,7 @@
    "mode": "webpython",
    "version": "0.1.0",
    "api_version": "0.1.1",
-   "description": "describe your plugin here.",
+   "description": "WebPython plugin sending data to window plugin to plot.",
    "tags": [],
    "ui": [
     "Try differen JS chart libraries.",
@@ -106,7 +106,7 @@
    },
    "version": "0.1.0",
    "api_version": "0.1.1",
-   "description": "Python worker for GUI demo",
+   "description": "Python worker for GUI demo.",
    "tags": [
     "nativePy",
     "webPy"
@@ -128,7 +128,7 @@
    "name": "GUI spectre",
    "mode": "window",
    "tags": [],
-   "ui": "User interface interacts with Python.",
+   "ui": "User interface interacting with Python.",
    "version": "0.1.0",
    "api_version": "0.1.1",
    "description": "describe your plugin here.",
@@ -157,7 +157,7 @@
    "ui": "UI for Untitled Plugin",
    "version": "0.1.0",
    "api_version": "0.1.1",
-   "description": "describe your plugin here.",
+   "description": "User interface interacting with Python.",
    "icon": "tv",
    "inputs": null,
    "outputs": null,
