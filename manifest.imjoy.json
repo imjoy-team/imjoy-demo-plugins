@@ -211,6 +211,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
+   "disabled": true,
    "uri": "demos/TestWebPythonPlugin.imjoy.html"
   },
   {
@@ -229,26 +230,6 @@
    ],
    "dependencies": [],
    "uri": "demos/handlebarsJS.imjoy.html"
-  },
-  {
-   "name": "Python Demo Plugin",
-   "type": "native-python",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "createdAt": "Mon Jun 26 2018 15:45:30",
-   "description": "A plugin for demonstrating python plugin.",
-   "tags": [],
-   "ui": "run python plugin",
-   "inputs": null,
-   "outputs": null,
-   "icon": "local_florist",
-   "env": null,
-   "requirements": [
-    "numpy"
-   ],
-   "cmd": "python",
-   "dependencies": [],
-   "uri": "demos/pythonDemoPlugin.imjoy.html"
   },
   {
    "name": "showDialog Demo",
@@ -335,6 +316,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
+   "disabled": true,
    "uri": "demos/testWebworkerPlugin.imjoy.html"
   },
   {
@@ -349,6 +331,7 @@
    "inputs": null,
    "outputs": null,
    "dependencies": [],
+   "disabled": true,
    "uri": "demos/testWindowPlugin.imjoy.html"
   },
   {
