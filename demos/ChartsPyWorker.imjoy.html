@@ -53,7 +53,7 @@ import asyncio
 
 class ImJoyPlugin():
     def setup(self):
-        self.windowId = None
+        self.window = None
 
     async def run(self, my):
 
@@ -105,19 +105,17 @@ class ImJoyPlugin():
         # Plot results
 
         ## Check if window was defined
-        if self.windowId is None:
-            self.windowId = await api.createWindow(data_plot)
-            print(f'New window with ID: {self.windowId}')
+        if self.window is None:
+            self.window = await api.createWindow(data_plot)
+            print(f'Window created')
 
         else:
-            print(f'Update window with ID: {self.windowId}')
-
+            print(f'Update window.')
             try:
-                await api.updateWindow(id=self.windowId,data=data)
-
+                await self.window.run(data=data)
             except:
-                self.windowId = await api.createWindow(data_plot)
-                print(f'Could not print to old window. New window with ID: {self.windowId}')
+                self.window = await api.createWindow(data_plot)
+                print(f'Could not print to old window. New window created.')
 
 api.export(ImJoyPlugin())
 </script>

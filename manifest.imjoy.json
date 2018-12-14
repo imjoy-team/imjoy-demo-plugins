@@ -414,14 +414,14 @@
    "ui": [],
    "version": "0.1.0",
    "api_version": "0.1.0",
-   "description": "Demonstrates api.createWindow and api.updateWindow.",
+   "description": "Demonstrates api.createWindow and update it.",
    "icon": "help_outline",
    "inputs": null,
    "outputs": null,
    "env": null,
    "requirements": null,
    "dependencies": [
-    "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
+    "oeway/ImJoy-Demo-Plugins:WindowPlugin"
    ],
    "uri": "examples/createWindow.imjoy.html"
   },

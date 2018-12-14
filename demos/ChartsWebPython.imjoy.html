@@ -40,10 +40,7 @@ import numpy as np
 
 class ImJoyPlugin():
     def setup(self):
-        self.windowId = None
-
-    def set_window(self,windowId):
-        self.windowId=windowId
+        self.window = None
 
     def run(self, my):
         api.showStatus('[DEMO] WebPython plotting to JS')
@@ -62,12 +59,12 @@ class ImJoyPlugin():
                 'data':data}
 
         # Check if window was defined
-        if self.windowId is None:
-            api.createWindow(data_plot).then(self.set_window)
+        if self.window is None:
+            def set_window(win):
+                self.window = win
+            api.createWindow(data_plot).then(set_window)
         else:
-            #api.updateWindow(id=self.windowId,data=data)
-            #api.updateWindow({'id':self.windowId},{'data':data})
-            api.updateWindow({'id':self.windowId,'data':data})
+            self.window.run({'data':data})
 
 api.export(ImJoyPlugin())
 </script>
