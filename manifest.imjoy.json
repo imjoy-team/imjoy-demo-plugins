@@ -64,7 +64,8 @@
    "icon": "swap_horiz",
    "env": null,
    "requirements": [
-    "numpy"
+    "numpy",
+    "matplotlib"
    ],
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Charts JS window"
@@ -424,6 +425,25 @@
     "oeway/ImJoy-Demo-Plugins:WindowPlugin"
    ],
    "uri": "examples/createWindow.imjoy.html"
+  },
+  {
+   "name": "getPlugin",
+   "type": "web-worker",
+   "tags": [],
+   "ui": "Calls plugin that shows Hello world",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "url": "",
+   "description": "Example for function api.getPlugin()",
+   "icon": "help_outline",
+   "inputs": null,
+   "outputs": null,
+   "env": "",
+   "requirements": [],
+   "dependencies": [
+    "oeway/ImJoy-Demo-Plugins:alert"
+   ],
+   "uri": "examples/getPlugin.imjoy.html"
   },
   {
    "name": "register",
