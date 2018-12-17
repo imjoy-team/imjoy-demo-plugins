@@ -1,0 +1,38 @@
+﻿
+<docs>
+Calls plugin "alert" which shows a user defined message.
+</docs>
+
+<config lang="json">
+{
+  "name": "getPlugin",
+  "type": "web-worker",
+  "tags": [],
+  "ui": "Calls plugin that shows Hello world",
+  "version": "0.1.0",
+  "api_version": "0.1.2",
+  "url": "",
+  "description": "Example for function api.getPlugin()",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": ["oeway/ImJoy-Demo-Plugins:alert"]
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+  }
+
+  async run(my) {
+    pluginAlert = await api.getPlugin("alert")
+    await pluginAlert.show_alert("This is a user message!")
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
