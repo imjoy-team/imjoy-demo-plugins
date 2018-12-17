@@ -28,7 +28,7 @@ class ImJoyPlugin {
   }
 
   async run(my) {
-    pluginAlert = await api.getPlugin("alert")
+    const pluginAlert = await api.getPlugin("alert")
     await pluginAlert.show_alert("This is a user message!")
   }
 }
