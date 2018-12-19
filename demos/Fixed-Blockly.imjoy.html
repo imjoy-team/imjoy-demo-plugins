@@ -1,0 +1,73 @@
+﻿
+<docs lang="markdown">
+# Blockly Demo
+
+Ported from [Blockly demo](https://blockly-demo.appspot.com/static/demos/fixed/index.html)
+
+</docs>
+
+<config lang="json">
+{
+  "name": "Fixed-Blockly",
+  "type": "window",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.0",
+  "api_version": "0.1.2",
+  "description": "This is a simple demo of injecting Blockly into a fixed-sized 'div' element.",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": ["https://blockly-demo.appspot.com/static/blockly_compressed.js", "https://blockly-demo.appspot.com/static/blocks_compressed.js", "https://blockly-demo.appspot.com/static/msg/js/en.js"],
+  "dependencies": [],
+  "defaults": {"w": 10, "h": 14}
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+    var demoWorkspace = Blockly.inject('blocklyDiv',
+        {media: '../../media/',
+         toolbox: document.getElementById('toolbox')});
+  }
+
+  async run(my) {
+
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+    <h1><a>Blockly</a> &gt;
+    <a>Demos</a> &gt; Fixed Blockly</h1>
+    <p>This is a simple demo of injecting Blockly into a fixed-sized 'div' element.</p>
+    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
+    <xml id="toolbox" style="display: none">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="math_number">
+        <field name="NUM">123</field>
+        </block>
+        <block type="math_arithmetic"></block>
+        <block type="text"></block>
+        <block type="text_print"></block>
+    </xml>
+  </div>
+</window>
+
+<style lang="css">
+body {
+background-color: #fff;
+font-family: sans-serif;
+}
+h1 {
+font-weight: normal;
+font-size: 140%;
+}
+</style>
