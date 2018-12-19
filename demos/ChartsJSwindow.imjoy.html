@@ -36,6 +36,14 @@ class ImJoyPlugin {
 
   run(my) {
 
+    // Clear canvas [used for chart.js]
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Clear div [used for C3 and plotly
+    document.getElementById('chart').innerHTML = ""; 
+
    // Set text
    console.log(my.data)
    document.getElementById("txt").innerHTML = my.data.chart_txt;
@@ -96,9 +104,6 @@ class ImJoyPlugin {
         case 'Chart.js':
             console.log(' Creating Chart.js graph ')
 
-            var canvas = document.getElementById('canvas');
-            var ctx = canvas.getContext('2d');
-
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'line',
@@ -136,10 +141,8 @@ api.export(new ImJoyPlugin())
 
 <window lang="html">
     <div>
-        <div>
-            <p id="txt"> </p>
-        </div>
-       <div id="chart"></div>
+        <div> <p id="txt"> </p> </div>
+        <div id="chart"></div>
        <canvas id="canvas"></canvas>
     </div>
 

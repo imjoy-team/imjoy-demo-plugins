@@ -1,16 +1,12 @@
-<docs lang="markdown">
+﻿<docs lang="markdown">
 Demo plugin to demonstrate how to plot charts in ImJoy. For this, some data is generated
-in a Python plugin and displayed in a separate window. We demonstrate two different options
+in a Pythons plugin andd displayed in a separate window. We demonstrate two different options
 
-1. First, you can send the data to a window plugin. This plugin then used one of several
+Here, we can send the data to a window plugin. This plugin then used one of several
 JavaScript libraries to plot your data. We provide simple implementations for these libraries
     * [C3](https://c3js.org/)
     * [Chart.js](https://www.chartjs.org/docs/latest/)
     * [Plotly](https://plot.ly/javascript/)
-
-2. You can directly create an image (`.png`) in the Python plugin. This image is then send
-to a window plugin and displayed there. Such an image is not restricted to simple charts,
-and can thus also contain more complex data which can not be send by the plugin communicatino protocols.
 
 
 </docs>
@@ -26,7 +22,7 @@ and can thus also contain more complex data which can not be send by the plugin 
   "ui": [
         "Try differen JS chart libraries.",
         "<hr>",
-        "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js','.png'], placeholder: 'Plotly'}",
+        "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
         "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
         "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
         ],
@@ -42,13 +38,7 @@ and can thus also contain more complex data which can not be send by the plugin 
 
 <script lang="python">
 
-import matplotlib as mpl
-mpl.use('Agg')
-
-import matplotlib.pyplot as plt
-plt.ioff()
 import numpy as np
-import base64
 import asyncio
 
 class ImJoyPlugin():
@@ -61,44 +51,21 @@ class ImJoyPlugin():
         print(my.config.chart_type)
 
         # Create damped cosine and dictionary for window
-        x_values = np.arange(0.0, 5.0, 5.0/my.config.n_points)
+        x_values = np.around(np.arange(0.0, 5.0, 5.0/my.config.n_points),decimals=2)
         y_values = np.exp(-x_values) * np.cos(2*np.pi*x_values)
 
 
         ### Create data depending on chart type
+        data = {'x': x_values.tolist(),
+            'y': y_values.tolist(),
+            'type': my.config.chart_type,
+            'chart_txt':my.config.chart_txt}
 
-        # Create png file
-        if my.config.chart_type == '.png':
-            # Plot curve and save as png
-            fig1, ax = plt.subplots(num='Example plot')
-            plt.plot(x_values, y_values)
-            name_plot = 'test.png'
-            plt.savefig(name_plot,dpi=200)
-
-            with open(name_plot, 'rb') as f:
-                data = f.read()
-                result = base64.b64encode(data).decode('ascii')
-                imgurl = 'data:image/png;base64,' + result
-                data = {"src": imgurl}
-
-                data_plot = {
-                    'name':'Plot charts: show png',
-                    'type':'imjoy/image',
-                    'w':12, 'h':15,
-                    'data':data}
-
-        # Use JavaScript chart libraries
-        else:
-            data = {'x': x_values.tolist(),
-                    'y': y_values.tolist(),
-                    'type': my.config.chart_type,
-                    'chart_txt':my.config.chart_txt}
-
-            data_plot = {
-                    'name':'Plot charts - with JavaScripts',
-                    'type':'Charts JS window',
-                    'w':12, 'h':15,
-                    'data':data}
+        data_plot = {
+                'name':'Plot charts - with JavaScripts',
+                'type':'Charts JS window',
+                'w':12, 'h':15,
+                'data':data}
 
 
 
