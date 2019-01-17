@@ -16,7 +16,7 @@
    "inputs": null,
    "outputs": null,
    "dependencies": [],
-   "uri": "demos\\3DVisualization.imjoy.html"
+   "uri": "demos/3DVisualization.imjoy.html"
   },
   {
    "name": "Charts JS window",
@@ -42,7 +42,7 @@
     "w": 10,
     "h": 20
    },
-   "uri": "demos\\ChartsJSwindow.imjoy.html"
+   "uri": "demos/ChartsJSwindow.imjoy.html"
   },
   {
    "name": "Charts PNG",
@@ -64,7 +64,7 @@
     "matplotlib"
    ],
    "dependencies": [],
-   "uri": "demos\\ChartsPNG.imjoy.html"
+   "uri": "demos/ChartsPNG.imjoy.html"
   },
   {
    "name": "Charts PyWorker",
@@ -92,7 +92,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Charts JS window"
    ],
-   "uri": "demos\\ChartsPyWorker.imjoy.html"
+   "uri": "demos/ChartsPyWorker.imjoy.html"
   },
   {
    "name": "Charts WebPython",
@@ -119,7 +119,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:Charts JS window"
    ],
-   "uri": "demos\\ChartsWebPython.imjoy.html"
+   "uri": "demos/ChartsWebPython.imjoy.html"
   },
   {
    "name": "Fixed-Blockly",
@@ -143,7 +143,7 @@
     "w": 10,
     "h": 14
    },
-   "uri": "demos\\Fixed-Blockly.imjoy.html"
+   "uri": "demos/Fixed-Blockly.imjoy.html"
   },
   {
    "name": "GUI PyWorker",
@@ -169,7 +169,7 @@
     "numpy"
    ],
    "dependencies": [],
-   "uri": "demos\\GUI PyWorker.imjoy.html"
+   "uri": "demos/GUI PyWorker.imjoy.html"
   },
   {
    "name": "GUI w3",
@@ -196,7 +196,7 @@
     "w": 15,
     "h": 25
    },
-   "uri": "demos\\GUI w3.imjoy.html"
+   "uri": "demos/GUI w3.imjoy.html"
   },
   {
    "name": "GUI spectre",
@@ -222,56 +222,7 @@
     "w": 12,
     "h": 25
    },
-   "uri": "demos\\GUIspectre.imjoy.html"
-  },
-  {
-   "name": "handlebars.js",
-   "type": "window",
-   "tags": [],
-   "ui": "",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "description": "Demonstrates how handlebars can be used to generate HTML from a tempate and some data.",
-   "icon": "extension",
-   "inputs": null,
-   "outputs": null,
-   "requirements": [
-    "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
-   ],
-   "dependencies": [],
-   "uri": "demos\\handlebarsJS.imjoy.html"
-  },
-  {
-   "name": "showDialog Demo",
-   "type": "web-worker",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "createdAt": "Mon Jun 19 2018 16:33:11",
-   "description": "A plugin for applying lookup table to a single-channel image.",
-   "tags": [],
-   "inputs": null,
-   "outputs": null,
-   "icon": "color_lens",
-   "dependencies": [],
-   "uri": "demos\\showDialog.imjoy.html"
-  },
-  {
-   "name": "tensorTest",
-   "type": "iframe",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "tags": [],
-   "ui": null,
-   "inputs": null,
-   "outputs": null,
-   "show_panel": true,
-   "description": "A plugin for testing tensorflow.js.",
-   "icon": null,
-   "requirements": [
-    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"
-   ],
-   "dependencies": [],
-   "uri": "demos\\tensorTest.imjoy.html"
+   "uri": "demos/GUIspectre.imjoy.html"
   },
   {
    "name": "Test WebPython Plugin",
@@ -308,7 +259,75 @@
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
    "disabled": true,
-   "uri": "demos\\TestWebPythonPlugin.imjoy.html"
+   "uri": "demos/TestWebPythonPlugin.imjoy.html"
+  },
+  {
+   "name": "handlebars.js",
+   "type": "window",
+   "tags": [],
+   "ui": "",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "description": "Demonstrates how handlebars can be used to generate HTML from a tempate and some data.",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "requirements": [
+    "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"
+   ],
+   "dependencies": [],
+   "uri": "demos/handlebarsJS.imjoy.html"
+  },
+  {
+   "name": "showDialog Demo",
+   "type": "web-worker",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "createdAt": "Mon Jun 19 2018 16:33:11",
+   "description": "A plugin for applying lookup table to a single-channel image.",
+   "tags": [],
+   "inputs": null,
+   "outputs": null,
+   "icon": "color_lens",
+   "dependencies": [],
+   "uri": "demos/showDialog.imjoy.html"
+  },
+  {
+   "name": "tSNE",
+   "type": "window",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "tags": [],
+   "ui": "show tSNE plot",
+   "inputs": null,
+   "outputs": null,
+   "show_panel": true,
+   "description": "A plugin for doing tSNE visualization, using a library from https://cs.stanford.edu/people/karpathy/tsnejs/.",
+   "icon": null,
+   "requirements": [
+    "https://cdn.rawgit.com/karpathy/tsnejs/13ece5d7/tsne.js"
+   ],
+   "dependencies": [],
+   "disabled": true,
+   "uri": "demos/tSNE.imjoy.html"
+  },
+  {
+   "name": "tensorTest",
+   "type": "iframe",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "tags": [],
+   "ui": null,
+   "inputs": null,
+   "outputs": null,
+   "show_panel": true,
+   "description": "A plugin for testing tensorflow.js.",
+   "icon": null,
+   "requirements": [
+    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"
+   ],
+   "dependencies": [],
+   "uri": "demos/tensorTest.imjoy.html"
   },
   {
    "name": "Test Webworker Plugin",
@@ -345,7 +364,7 @@
     "oeway/ImJoy-Demo-Plugins:Test Window Plugin"
    ],
    "disabled": true,
-   "uri": "demos\\testWebworkerPlugin.imjoy.html"
+   "uri": "demos/testWebworkerPlugin.imjoy.html"
   },
   {
    "name": "Test Window Plugin",
@@ -360,7 +379,7 @@
    "outputs": null,
    "dependencies": [],
    "disabled": true,
-   "uri": "demos\\testWindowPlugin.imjoy.html"
+   "uri": "demos/testWindowPlugin.imjoy.html"
   },
   {
    "name": "three.js",
@@ -382,26 +401,22 @@
    ],
    "dependencies": [],
    "disabled": true,
-   "uri": "demos\\threeJS.imjoy.html"
+   "uri": "demos/threeJS.imjoy.html"
   },
   {
-   "name": "tSNE",
+   "name": "WindowPlugin",
    "type": "window",
+   "tags": [],
+   "ui": "Window plugin",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "tags": [],
-   "ui": "show tSNE plot",
+   "description": "Window plugin that can be called.",
+   "icon": "extension",
+   "runnable": false,
    "inputs": null,
    "outputs": null,
-   "show_panel": true,
-   "description": "A plugin for doing tSNE visualization, using a library from https://cs.stanford.edu/people/karpathy/tsnejs/.",
-   "icon": null,
-   "requirements": [
-    "https://cdn.rawgit.com/karpathy/tsnejs/13ece5d7/tsne.js"
-   ],
    "dependencies": [],
-   "disabled": true,
-   "uri": "demos\\tSNE.imjoy.html"
+   "uri": "examples/WindowPlugin.imjoy.html"
   },
   {
    "name": "alert",
@@ -418,7 +433,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\alert.imjoy.html"
+   "uri": "examples/alert.imjoy.html"
   },
   {
    "name": "call",
@@ -437,7 +452,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:alert"
    ],
-   "uri": "examples\\call.imjoy.html"
+   "uri": "examples/call.imjoy.html"
   },
   {
    "name": "createWindow",
@@ -455,7 +470,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:WindowPlugin"
    ],
-   "uri": "examples\\createWindow.imjoy.html"
+   "uri": "examples/createWindow.imjoy.html"
   },
   {
    "name": "getPlugin",
@@ -474,7 +489,24 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:alert"
    ],
-   "uri": "examples\\getPlugin.imjoy.html"
+   "uri": "examples/getPlugin.imjoy.html"
+  },
+  {
+   "name": "progress",
+   "type": "web-worker",
+   "tags": [],
+   "ui": "Updates ImJoy progress bar.",
+   "version": "0.1.0",
+   "api_version": "0.1.2",
+   "url": "",
+   "description": "Example for function api.progress()",
+   "icon": "help_outline",
+   "inputs": null,
+   "outputs": null,
+   "env": "",
+   "requirements": [],
+   "dependencies": [],
+   "uri": "examples/progress.imjoy.html"
   },
   {
    "name": "register",
@@ -491,7 +523,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\register.imjoy.html"
+   "uri": "examples/register.imjoy.html"
   },
   {
    "name": "run",
@@ -510,7 +542,7 @@
    "dependencies": [
     "oeway/ImJoy-Demo-Plugins:alert"
    ],
-   "uri": "examples\\run.imjoy.html"
+   "uri": "examples/run.imjoy.html"
   },
   {
    "name": "setConfig",
@@ -527,7 +559,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\setConfig.imjoy.html"
+   "uri": "examples/setConfig.imjoy.html"
   },
   {
    "name": "showDialog",
@@ -544,7 +576,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\showDialog.imjoy.html"
+   "uri": "examples/showDialog.imjoy.html"
   },
   {
    "name": "showFileDialog",
@@ -561,7 +593,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\showFileDialog.imjoy.html"
+   "uri": "examples/showFileDialog.imjoy.html"
   },
   {
    "name": "showProgress",
@@ -578,7 +610,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\showProgress.imjoy.html"
+   "uri": "examples/showProgress.imjoy.html"
   },
   {
    "name": "showSnackbar",
@@ -595,7 +627,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\showSnackbar.imjoy.html"
+   "uri": "examples/showSnackbar.imjoy.html"
   },
   {
    "name": "showStatus",
@@ -612,22 +644,7 @@
    "env": "",
    "requirements": [],
    "dependencies": [],
-   "uri": "examples\\showStatus.imjoy.html"
-  },
-  {
-   "name": "WindowPlugin",
-   "type": "window",
-   "tags": [],
-   "ui": "Window plugin",
-   "version": "0.1.0",
-   "api_version": "0.1.2",
-   "description": "Window plugin that can be called.",
-   "icon": "extension",
-   "runnable": false,
-   "inputs": null,
-   "outputs": null,
-   "dependencies": [],
-   "uri": "examples\\WindowPlugin.imjoy.html"
+   "uri": "examples/showStatus.imjoy.html"
   }
  ],
  "collections": []

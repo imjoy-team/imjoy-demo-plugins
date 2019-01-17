@@ -1,18 +1,18 @@
 ﻿
 <docs>
-Shows progress in ImJoy progress bar.
+Shows progress for a given plugin in the plugin menur.
 </docs>
 
 <config lang="json">
 {
-  "name": "showProgress",
+  "name": "progress",
   "type": "web-worker",
   "tags": [],
   "ui": "Updates ImJoy progress bar.",
   "version": "0.1.0",
   "api_version": "0.1.2",
   "url": "",
-  "description": "Example for function api.showProgress()",
+  "description": "Example for function api.progress()",
   "icon": "help_outline",
   "inputs": null,
   "outputs": null,
@@ -36,7 +36,7 @@ class ImJoyPlugin {
     for(let i=0; i<101; i++)
         {
             await api.utils.sleep(0.02)
-            api.showProgress(i)
+            api.progress(i)
         }
 
   }
@@ -44,3 +44,4 @@ class ImJoyPlugin {
 
 api.export(new ImJoyPlugin())
 </script>
+
