@@ -1,0 +1,45 @@
+﻿
+<docs>
+Demonstrate how to create and update a ImJoy window.
+</docs>
+
+<config lang="json">
+{
+  "name": "createWindow-imgComp",
+  "type": "web-worker",
+  "tags": [],
+  "ui": [],
+  "version": "0.1.0",
+  "api_version": "0.1.0",
+  "description": "Demonstrates api.createWindow to compare two images",
+  "icon": "help_outline",
+  "inputs": null,
+  "outputs": null,
+  "env": null,
+  "requirements": null,
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+  }
+
+  run(my) {
+
+    // Create a new window
+api.createWindow({
+    name: 'test compare',
+    type: 'imjoy/image-compare',
+    data: {
+      first: '//placehold.it/350x150/0288D1/FFFFFF',
+      second: '//placehold.it/350x150/E8117F/FFFFFF'
+    }
+  })
+  }
+}
+
+
+api.export(new ImJoyPlugin())
+</script>
