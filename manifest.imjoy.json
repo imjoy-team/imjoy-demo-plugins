@@ -473,7 +473,7 @@
    "uri": "examples/createWindow.imjoy.html"
   },
   {
-   "name": "createWindow-imgComp",
+   "name": "createWindowImgComp",
    "type": "web-worker",
    "tags": [],
    "ui": [],
