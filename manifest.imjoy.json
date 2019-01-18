@@ -455,22 +455,6 @@
    "uri": "examples/call.imjoy.html"
   },
   {
-   "name": "createWindow-imgComp",
-   "type": "web-worker",
-   "tags": [],
-   "ui": [],
-   "version": "0.1.0",
-   "api_version": "0.1.0",
-   "description": "Demonstrates api.createWindow to compare two images",
-   "icon": "help_outline",
-   "inputs": null,
-   "outputs": null,
-   "env": null,
-   "requirements": null,
-   "dependencies": [],
-   "uri": "examples/createWindow-imgComp.imjoy.html"
-  },
-  {
    "name": "createWindow",
    "type": "web-worker",
    "tags": [],
@@ -487,6 +471,22 @@
     "oeway/ImJoy-Demo-Plugins:WindowPlugin"
    ],
    "uri": "examples/createWindow.imjoy.html"
+  },
+  {
+   "name": "createWindow-imgComp",
+   "type": "web-worker",
+   "tags": [],
+   "ui": [],
+   "version": "0.1.0",
+   "api_version": "0.1.0",
+   "description": "Demonstrates api.createWindow to compare two images",
+   "icon": "help_outline",
+   "inputs": null,
+   "outputs": null,
+   "env": null,
+   "requirements": null,
+   "dependencies": [],
+   "uri": "examples/createWindowImgComp.imjoy.html"
   },
   {
    "name": "getPlugin",
