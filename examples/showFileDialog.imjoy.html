@@ -32,16 +32,15 @@ class ImJoyPlugin {
   // Main function - called when plugin is executed
   async run(my) {
         
-         try{
-            const file_path = await api.showFileDialog()
-        
-            // Show reply as an alert
-            await api.alert("Selected file " + file_path)
-        }
-        catch{
-            await api.alert("User pressed cancel")
-        };
-  }
+      try{
+        const file_path = await api.showFileDialog({root: '~'})
+        await api.alert("Selected file " + file_path)
+      }
+      catch(e){
+        await api.alert("Error: "+e.toString())
+      };
+    
+   }
 }
 
 api.export(new ImJoyPlugin())
