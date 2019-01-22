@@ -11,7 +11,7 @@
    "ui": "Demo: {id: 'demo', type:'choose', options: ['Sponza', 'Volume(vtk.js)'], placeholder: 'Volume(vtk.js)'}",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "A set of demo plugins of webGL 3D.",
+   "description": "Demonstration of 3D plotting with different webGL libraries.",
    "icon": "extension",
    "inputs": null,
    "outputs": null,
@@ -25,7 +25,7 @@
    "ui": "",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "Window showing JS charts.",
+   "description": "Window plugin to show received data with specified JavaScript library.",
    "icon": "photo",
    "inputs": null,
    "outputs": null,
@@ -49,7 +49,7 @@
    "type": "native-python",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "PyWorker plugin sending png image to a ImJoy Window.",
+   "description": "PyWorker sending a PNG image to be displayed in an ImJoy window.",
    "tags": [],
    "ui": [
     "# of data points : {id:'n_points', type: 'number', min: 0, placeholder:20}"
@@ -71,10 +71,10 @@
    "type": "native-python",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "PyWorker plugin sending data to window plugin to plot.",
+   "description": "PyWorker plugin sending data to 'Charts JS window' plugin to plot.",
    "tags": [],
    "ui": [
-    "Try differen JS chart libraries.",
+    "Try differen JS chart libraries for plotting.",
     "<hr>",
     "Type: {id:'chart_type', type: 'choose', options: ['Plotly','C3','Chart.js'], placeholder: 'Plotly'}",
     "Chart title:{id:'chart_txt',type:'string',placeholder:'Custom text'}",
@@ -99,7 +99,7 @@
    "type": "web-python",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "WebPython plugin sending data to window plugin to plot.",
+   "description": "WebPython plugin sending data to 'Charts JS window' plugin to plot.",
    "tags": [],
    "ui": [
     "Try differen JS chart libraries.",
@@ -128,7 +128,7 @@
    "ui": "",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "This is a simple demo of injecting Blockly into a fixed-sized 'div' element.",
+   "description": "Simple demo of injecting Blockly into a fixed-sized 'div' element.",
    "icon": "extension",
    "inputs": null,
    "outputs": null,
@@ -153,7 +153,7 @@
    },
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "Python worker for GUI demo.",
+   "description": "Python plugin performing calculations for the user interface demo.",
    "tags": [
     "nativePy",
     "webPy"
@@ -178,7 +178,7 @@
    "ui": "",
    "version": "0.1.0",
    "api_version": "0.1.2",
-   "description": "User interface interacting with Python.",
+   "description": "User interface written with W3.css interacting with Python plugin.",
    "icon": "tv",
    "inputs": null,
    "outputs": null,
@@ -193,7 +193,7 @@
     "oeway/ImJoy-Demo-Plugins:GUI PyWorker"
    ],
    "defaults": {
-    "w": 15,
+    "w": 25,
     "h": 25
    },
    "uri": "demos/GUI w3.imjoy.html"
@@ -202,7 +202,7 @@
    "name": "GUI spectre",
    "type": "window",
    "tags": [],
-   "ui": "User interface interacting with Python.",
+   "ui": "User interface written with spectre.css interacting with Python.",
    "version": "0.1.0",
    "api_version": "0.1.2",
    "description": "User interface interacting with Python.",

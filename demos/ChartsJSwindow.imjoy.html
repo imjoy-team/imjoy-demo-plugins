@@ -12,7 +12,7 @@ Please note that when run by itself the plugin does not display anything.
   "ui": "",
   "version": "0.1.0",
   "api_version": "0.1.2",
-  "description": "Window showing JS charts.",
+  "description": "Window plugin to show received data with specified JavaScript library.",
   "icon": "photo",
   "inputs": null,
   "outputs": null,
@@ -42,7 +42,7 @@ class ImJoyPlugin {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Clear div [used for C3 and plotly
-    document.getElementById('chart').innerHTML = ""; 
+    document.getElementById('chart').innerHTML = "";
 
    // Set text
    console.log(my.data)
