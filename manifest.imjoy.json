@@ -19,7 +19,7 @@
   "requirements": [],
   "dependencies": ["PythonServer"],
   "defaults": {"w": 20, "h": 10},
-  "uri": "demos/Function I.imjoy.html"
+  "uri": "examples/Function I.imjoy.html"
 },
   {
    "name": "3D visualization",
