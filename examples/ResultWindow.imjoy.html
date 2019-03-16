@@ -1,0 +1,56 @@
+<docs lang="markdown">
+[TODO: write documentation for this plugin.]
+</docs>
+
+<config lang="json">
+{
+  "name": "ResultWindow",
+  "type": "window",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.0",
+  "api_version": "0.1.2",
+  "description": "Function Result Window",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "runnable": false,
+  "env": "",
+  "requirements": [],
+  "dependencies": [],
+  "defaults": {"w": 20, "h": 10}
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+
+  }
+
+  async run(my) {
+    console.log('running the window plugin ', my)
+    const node = document.createElement("li");  
+    if (my.data.fileName) {
+        const textnode = document.createTextNode('FileName: ' + my.data.fileName + '   关键点: ' + my.data.keyPoint);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
+        if(my.data.callback) my.data.callback('hello from the window plugin')
+    }
+    
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+    <h2 id="h2">检测结果</h2>
+    <div id="myList"></div>
+  </div>
+</window>
+
+<style lang="css">
+
+</style>
