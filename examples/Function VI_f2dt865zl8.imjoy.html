@@ -1,0 +1,152 @@
+﻿<docs lang="markdown">
+[TODO: write documentation for this plugin.]
+</docs>
+
+<config lang="json">
+{
+  "name": "Function VI",
+  "type": "window",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.0",
+  "api_version": "0.1.2",
+  "description": "图像质量检测",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": [],
+  "defaults": {"w": 20, "h": 10}
+}
+</config>
+
+<script lang="javascript">
+let fileSelect = null
+let fileElem = null
+let fileList= null
+let uploadUrl = 'http://192.168.199.172:3000/file_upload'
+let args = []
+let predictResult = null
+class ImJoyPlugin {
+  async setup() {
+
+  }
+
+      async handleFiles () {
+        let files = this.files
+        if (!files.length) {
+            fileList.innerHTML = "<p>No files selected!</p>";
+        } else {
+            fileList.innerHTML = "";
+            const list = document.createElement("ul");
+            fileList.appendChild(list);
+            for (let i = 0; i < files.length; i++) {
+                const li = document.createElement("li");
+                list.appendChild(li);
+
+                const img = document.createElement("img");
+                img.src = window.URL.createObjectURL(files[i]);
+                img.height = 60;
+                img.onload = function() {
+                    window.URL.revokeObjectURL(this.src);
+                }
+                li.appendChild(img);
+                const info = document.createElement("span");
+                info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+                li.appendChild(info);
+            }
+        }
+    }
+  async run(my) {
+    window.URL = window.URL || window.webkitURL;
+
+    fileSelect = document.getElementById("fileSelect");
+        fileElem = document.getElementById("fileElem");
+        fileList = document.getElementById("fileList");
+        predictResult = document.getElementById('predictResult')
+
+    fileSelect.addEventListener("click", function(e) {
+        if (fileElem) {
+            fileElem.click();
+        }
+        e.preventDefault(); // prevent navigation to "#"
+    }, false);
+
+    fileElem.addEventListener('change', this.handleFiles, false)
+
+    let fileClear = document.getElementById('fileClear')
+    fileClear.addEventListener('click', event => {
+        fileList.innerHTML = "<p>No files selected!</p>";
+        fileElem.value = ''
+        predictResult.innerHTML = ''
+    })
+
+    let predict = document.getElementById('predict')
+    predict.addEventListener('click', async event => {
+        console.log(args)
+        let res = await api.call('PythonServer', 'predictIV', args)
+        console.log(res)
+    })
+
+    let button = document.getElementById('upload')
+    button.addEventListener('click', event => {
+        args = []
+        let files = document.getElementById('fileElem').files
+        if (files && files.length > 0) {
+            let url = uploadUrl
+            for (let item of files) {
+                console.log(item)
+                let formData = new FormData()
+                formData.append('image', item)
+                formData.append('function', 'FunctionIII')
+                let xhr = new XMLHttpRequest()
+
+                xhr.onload = function() {
+                    console.log('ok')
+                    console.log(JSON.parse(xhr.responseText))
+                    
+                    args.push(JSON.parse(xhr.responseText))
+                    predictResult.innerHTML = 'upload success!'
+                }
+                xhr.onerror = function() {
+                    console.log('fail')
+                }
+                xhr.open('post', url, true)
+                xhr.send(formData)
+            }
+        } else {
+            console.log('请选择文件')
+        }
+    })
+    
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+     <h2>图像质量检测</h2>
+
+    <div>
+        <input type="file" id="fileElem" multiple accept="image/*"  style="display:none">
+        <a href="#" id="fileSelect">Select file</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" id="fileClear">Clear file</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" id="upload">Upload</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" id="predict">Predict</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        <div id="fileList">
+            <p>No file selected!</p>
+        </div>
+        <br>
+        <div id="predictResult">
+        </div>
+    </div>
+  </div>
+</window>
+
+<style lang="css">
+
+</style>
