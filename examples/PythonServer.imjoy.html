@@ -17,7 +17,7 @@
   "icon": "extension",
   "env": "",
   "requirements": [],
-  "dependencies": ["gywgithub/ImJoy-Demo-Plugins:FunctionIIResultWindow", "gywgithub/ImJoy-Demo-Plugins:FunctionIIIResultWindow", "gywgithub/ImJoy-Demo-Plugins:ResultWindow"]
+  "dependencies": ["gywgithub/ImJoy-Demo-Plugins:ResultWindow"]
 }
 </config>
 
@@ -70,14 +70,14 @@ class ImJoyPlugin():
     async def predictIII (self, args):
         print(args)
         win = await api.createWindow({
-            'name': 'FunctionIIIResultWindow',
-            'type': 'FunctionIIIResultWindow',
+            'name': 'ResultWindow',
+            'type': 'ResultWindow',
             'w':10, 'h':10,
             'data':{'fileName': '', 'flag': '是', 'time': '0s', 'message': ''}
         })
         i = 1
-        while i <= 20:
-            win.run({'data':{'fileName': 'cat.jpg', 'flag': '是', 'time': '0.01s', 'message': '没有人脸'}})
+        while i <= 1000:
+            win.run({'function': 'FunctionIII', 'data':{'fileName': 'cat.jpg', 'flag': '是', 'time': '0.01s', 'message': '没有人脸'}})
             i += 1
         return '1'
 
@@ -93,13 +93,13 @@ class ImJoyPlugin():
             'data':{'fileName': '', 'keyPoint': ''}
         })
         i = 1
-        while i <= 20:
+        while i <= 1000:
             win.run({'function': 'FunctionIV', 'data':{'fileName': 'cat.jpg', 'keyPoint': '[{x: 1, y: 1}, {x2: 2, y2: 2}]'}})
             i += 1
         return '1'
 
     # 活体检测
-    async def predictIV (self, args):
+    async def predictV (self, args):
         print(args)
         win = await api.createWindow({
             'name': 'ResultWindow',
@@ -109,12 +109,12 @@ class ImJoyPlugin():
         })
         i = 1
         while i <= 1000:
-            win.run({'function': 'FunctionIV', 'data':{'fileName': 'cat.jpg', 'falg': '否'}})
+            win.run({'function': 'FunctionV', 'data':{'fileName': 'cat.jpg', 'flag': '否'}})
             i += 1
         return '1'
 
     # 图像质量检测
-    async def predictIV (self, args):
+    async def predictVI (self, args):
         print(args)
         win = await api.createWindow({
             'name': 'ResultWindow',
@@ -124,7 +124,7 @@ class ImJoyPlugin():
         })
         i = 1
         while i <= 25:
-            win.run({'function': 'FunctionIV', 'data':{'fileName': 'cat.jpg', 'message': '图像模糊,详细描述...'}})
+            win.run({'function': 'FunctionVI', 'data':{'fileName': 'cat.jpg', 'message': '图像模糊,详细描述...'}})
             i += 1
         return '1'
 

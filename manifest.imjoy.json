@@ -24,6 +24,106 @@
             "uri": "examples/Function I.imjoy.html"
         },
         {
+            "name": "Function II",
+            "type": "window",
+            "tags": [],
+            "ui": "",
+            "version": "0.1.0",
+            "api_version": "0.1.2",
+            "description": "1:1 人脸核验",
+            "icon": "extension",
+            "inputs": null,
+            "outputs": null,
+            "env": "",
+            "requirements": [],
+            "dependencies": ["PythonServer"],
+            "defaults": {
+                "w": 20,
+                "h": 10
+            },
+            "uri": "examples/Function II.imjoy.html"
+        },
+        {
+            "name": "Function III",
+            "type": "window",
+            "tags": [],
+            "ui": "",
+            "version": "0.1.0",
+            "api_version": "0.1.2",
+            "description": "1:n人脸识别",
+            "icon": "extension",
+            "inputs": null,
+            "outputs": null,
+            "env": "",
+            "requirements": [],
+            "dependencies": [],
+            "defaults": {
+                "w": 20,
+                "h": 10
+            },
+            "uri": "examples/Function III.imjoy.html"
+        },
+        {
+            "name": "Function IV",
+            "type": "window",
+            "tags": [],
+            "ui": "",
+            "version": "0.1.0",
+            "api_version": "0.1.2",
+            "description": "关键点检测",
+            "icon": "extension",
+            "inputs": null,
+            "outputs": null,
+            "env": "",
+            "requirements": [],
+            "dependencies": [],
+            "defaults": {
+                "w": 20,
+                "h": 10
+            },
+            "uri": "examples/Function IV.imjoy.html"
+        },
+        {
+            "name": "Function V",
+            "type": "window",
+            "tags": [],
+            "ui": "",
+            "version": "0.1.0",
+            "api_version": "0.1.2",
+            "description": "活体检测",
+            "icon": "extension",
+            "inputs": null,
+            "outputs": null,
+            "env": "",
+            "requirements": [],
+            "dependencies": [],
+            "defaults": {
+                "w": 20,
+                "h": 10
+            },
+            "uri": "examples/Function V.imjoy.html"
+        },
+        {
+            "name": "Function VI",
+            "type": "window",
+            "tags": [],
+            "ui": "",
+            "version": "0.1.0",
+            "api_version": "0.1.2",
+            "description": "图像质量检测",
+            "icon": "extension",
+            "inputs": null,
+            "outputs": null,
+            "env": "",
+            "requirements": [],
+            "dependencies": [],
+            "defaults": {
+                "w": 20,
+                "h": 10
+            },
+            "uri": "examples/Function VI.imjoy.html"
+        },
+        {
             "name": "PythonServer",
             "type": "native-python",
             "version": "0.1.0",
@@ -37,7 +137,7 @@
             "icon": "extension",
             "env": "",
             "requirements": [],
-            "dependencies": ["gywgithub/ImJoy-Demo-Plugins:FunctionIIResultWindow", "gywgithub/ImJoy-Demo-Plugins:FunctionIIIResultWindow", "gywgithub/ImJoy-Demo-Plugins:ResultWindow"],
+            "dependencies": ["gywgithub/ImJoy-Demo-Plugins:ResultWindow"],
             "uri": "examples/PythonServer.imjoy.html"
         },
         {

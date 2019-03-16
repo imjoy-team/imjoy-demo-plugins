@@ -68,7 +68,7 @@ class ImJoyPlugin {
     let predict = document.getElementById('predict')
     predict.addEventListener('click', async event => {
         console.log(args)
-        let res = await api.call('PythonServer', 'predictIV', args)
+        let res = await api.call('PythonServer', 'predictV', args)
         console.log(res)
     })
 
@@ -82,7 +82,7 @@ class ImJoyPlugin {
                 console.log(item)
                 let formData = new FormData()
                 formData.append('image', item)
-                formData.append('function', 'FunctionIII')
+                formData.append('function', 'FunctionV')
                 let xhr = new XMLHttpRequest()
 
                 xhr.onload = function() {

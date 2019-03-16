@@ -1,4 +1,4 @@
-<docs lang="markdown">
+﻿<docs lang="markdown">
 [TODO: write documentation for this plugin.]
 </docs>
 
@@ -33,27 +33,27 @@ class ImJoyPlugin {
     let obj = {
             'FunctionI': {
                 'title': '人脸检测',
-                'text': 'FileName: ' + my.data.fileName + '   在底库中是否存在: ' + my.data.flag + '   耗时: ' + my.data.time + '    ' + my.data.message
+                'text': 'FileName: ' + my.data.fileName + ' ;   在底库中是否存在: ' + my.data.flag + ' ;   耗时: ' + my.data.time + ' ;    ' + my.data.message
             },
             'FunctionII': {
                 'title': '1:1人脸核验',
-                'text': 'ID: ' + my.data.ID + '   是否同一个人: ' + my.data.flag + '   耗时: ' + my.data.time
+                'text': 'ID: ' + my.data.ID + ' ;   是否同一个人: ' + my.data.flag + ' ;   耗时: ' + my.data.time
             },
             'FunctionIII': {
                 'title': '1:n人脸识别',
-                'text': 'FileName: ' + my.data.fileName + '   在底库中是否存在: ' + my.data.flag + '   耗时: ' + my.data.time + '    ' + my.data.message
+                'text': 'FileName: ' + my.data.fileName + ' ;   在底库中是否存在: ' + my.data.flag + ' ;   耗时: ' + my.data.time + ' ;    ' + my.data.message
             },
             'FunctionIV': {
                 'title': '关键点检测',
-                'text': 'FileName: ' + my.data.fileName + '   关键点: ' + my.data.keyPoint
+                'text': 'FileName: ' + my.data.fileName + ' ;   关键点: ' + my.data.keyPoint
             },
             'FunctionV': {
                 'title': '活体检测',
-                'text': 'FileName: ' + my.data.fileName + '   是否活体: ' + my.data.flag
+                'text': 'FileName: ' + my.data.fileName + ' ;   是否活体: ' + my.data.flag
             },
             'FunctionVI': {
                 'title': '图像质量检测',
-                'text': 'FileName: ' + my.data.fileName + '   结果信息: ' + my.data.message
+                'text': 'FileName: ' + my.data.fileName + ' ;   结果信息: ' + my.data.message
             }
         }
     if (my.function) {
@@ -61,15 +61,11 @@ class ImJoyPlugin {
         h2.innerHTML = obj[my.function].title
     }
     const node = document.createElement("li");  
-    if (my.data.fileName) {
-        console.log(my.data.fileName)
+    if (my.data.fileName || my.data.ID) {
         const textnode = document.createTextNode(obj[my.function].text);
-        console.log(1)
         node.appendChild(textnode);                            
         document.getElementById("myList").appendChild(node);
-        console.log(2)
         if(my.data.callback) my.data.callback('hello from the window plugin')
-        console.log(3)
     }
     
   }
