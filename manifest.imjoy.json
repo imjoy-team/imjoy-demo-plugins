@@ -17,7 +17,7 @@
   "outputs": null,
   "env": "",
   "requirements": [],
-  "dependencies": ["PythonServer"],
+  "dependencies": ["gywgithub/ImJoy-Demo-Plugins:PythonServer"],
   "defaults": {"w": 20, "h": 10},
   "uri": "examples/Function I.imjoy.html"
 },
