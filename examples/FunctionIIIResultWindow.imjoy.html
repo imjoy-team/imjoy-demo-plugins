@@ -29,13 +29,15 @@ class ImJoyPlugin {
   }
 
   async run(my) {
-    // console.log('running in the plugin ', my)
     console.log('running the window plugin ', my.data)
-    const node = document.createElement("li");                 // Create a <li> node
-    const textnode = document.createTextNode('Received value: ' + my.data.value);         // Create a text node
-    node.appendChild(textnode);                              // Append the text to <li>
-    document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
-    if(my.data.callback) my.data.callback('hello from the window plugin')
+    const node = document.createElement("li");  
+    if (my.data.fileName) {
+        const textnode = document.createTextNode('FileName: ' + my.data.fileName + '   在底库中是否存在: ' + my.data.flag + '   耗时: ' + my.data.time + '    ' + my.data.message);         // Create a text node
+        node.appendChild(textnode);                              // Append the text to <li>
+        document.getElementById("myList").appendChild(node);     // Append <li> to <ul> with id="myList"
+        if(my.data.callback) my.data.callback('hello from the window plugin')
+    }
+    
   }
 }
 
