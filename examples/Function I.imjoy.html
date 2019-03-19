@@ -1,4 +1,4 @@
-﻿<docs lang="markdown">
+<docs lang="markdown">
 [TODO: write documentation for this plugin.]
 </docs>
 
@@ -61,7 +61,15 @@ class ImJoyPlugin {
         }
     }
 
+    async t1() {
+        console.log('t1')
+        let div = document.getElementById('t1')
+        div.innerHTML = '22'
+        console.log('22')
+    }
+
   async run(my) {
+    console.log('run: ', this)
     window.URL = window.URL || window.webkitURL;
 
     fileSelect = document.getElementById("fileSelect");
@@ -90,7 +98,12 @@ class ImJoyPlugin {
     predict.addEventListener('click', async event => {
         console.log(args)
         message.innerHTML = '正在检测...'
-        let res = await api.call('PythonServer', 'predict', args)
+        console.log('this: ', this)
+        // this.t1()
+        let pr = this.__proto__
+        console.log('pr: ', pr)
+        // console.log('ap: ', api)
+        let res = await api.call('PythonServer', 'predict', args, pr)
         message.innerHTML = '检测结束!'
         if (res && res.length > 0) {
             console.log('predict: ', res)
@@ -164,6 +177,7 @@ api.export(new ImJoyPlugin())
 
 <window lang="html">
   <div>
+    <div id="t1">t1</div>
     <h2>Function I 人脸检测</h2>
     <div>
         <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
