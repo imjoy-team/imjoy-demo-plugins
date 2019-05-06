@@ -314,6 +314,46 @@
    "uri": "demos/TestWebPythonPlugin.imjoy.html"
   },
   {
+   "name": "WebPython-Matplotlib",
+   "type": "web-python-window",
+   "version": "0.1.0",
+   "description": "Using matplotlib with web-python powered by Pyodide.",
+   "tags": [],
+   "ui": "",
+   "cover": "",
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "extension",
+   "api_version": "0.1.3",
+   "env": "",
+   "requirements": [
+    "matplotlib"
+   ],
+   "dependencies": [],
+   "uri": "demos/WebPython-Matplotlib.imjoy.html"
+  },
+  {
+   "name": "WebPythonCanvas",
+   "type": "web-python-window",
+   "version": "0.1.0",
+   "description": "Controlling a HTML canvas in web-python powered by Pyodide.",
+   "tags": [],
+   "ui": "",
+   "cover": "",
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "extension",
+   "api_version": "0.1.3",
+   "env": "",
+   "requirements": [
+    "matplotlib"
+   ],
+   "dependencies": [],
+   "uri": "demos/WebPythonCanvas.imjoy.html"
+  },
+  {
    "name": "handlebars.js",
    "type": "window",
    "tags": [],
