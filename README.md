@@ -1,4 +1,4 @@
-<a href="https://imjoy.io/#/app?repo=https://github.com/oeway/ImJoy-Demo-Plugins"></a><img alt="Custom badge" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Foeway%2FImJoy-Demo-Plugins%2Fmaster%2Fbadge.imjoy.json"><a>
+<a href="https://imjoy.io/#/app?repo=https://github.com/oeway/ImJoy-Demo-Plugins" target="_blank"><img alt="Custom badge" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2Foeway%2FImJoy-Demo-Plugins%2Fmaster%2Fbadge.imjoy.json"></a>
 
 # Demo Plugins for [ImJoy](https://imjoy.io)
 Plugin repository for ImJoy.IO
