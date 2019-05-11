@@ -755,5 +755,9 @@
    "uri": "examples/showStatus.imjoy.html"
   }
  ],
- "collections": []
+ "collections": [],
+ "schemaVersion": 1,
+ "label": "Open With",
+ "message": "ImJoy",
+ "color": "success",
 }
