@@ -1,4 +1,4 @@
-﻿<docs lang="markdown">
+<docs lang="markdown">
 [TODO: write documentation for this plugin.]
 </docs>
 
@@ -8,7 +8,7 @@
   "type": "window",
   "tags": [],
   "ui": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "cover": "",
   "description": "This plugin uses getUserMedia to get video stream from the webcam",
   "icon": "extension",
@@ -25,17 +25,10 @@
 <script lang="javascript">
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
-  audio: false,
-  video: true
-};
-
-function handleSuccess(stream) {
-  const video = document.querySelector('video');
-  const videoTracks = stream.getVideoTracks();
-  console.log('Got stream with constraints:', constraints);
-  console.log(`Using video device: ${videoTracks[0].label}`);
-  window.stream = stream; // make variable available to browser console
-  video.srcObject = stream;
+    audio: false,
+    video: {
+        facingMode: 'user'
+    }
 }
 
 function handleError(error) {
@@ -65,9 +58,12 @@ class ImJoyPlugin {
   }
 
   async run(ctx) {
+
     try {
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      handleSuccess(stream);
+      const video = document.querySelector('video');
+      const stream = await navigator.mediaDevices.getUserMedia(constraints)
+      const videoTracks = stream.getVideoTracks();
+      video.srcObject = stream;
     } catch (e) {
       console.error(e)
       handleError(e);
@@ -80,7 +76,7 @@ api.export(new ImJoyPlugin())
 
 <window lang="html">
   <div>
-    <video id="video" autoplay="" playsinline=""></video>
+    <video id="video" autoplay="" playsinline="" muted=""></video>
     <p id="errorMsg"></p>
   </div>
 </window>
