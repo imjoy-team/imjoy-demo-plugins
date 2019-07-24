@@ -339,6 +339,27 @@
    "uri": "demos/TiledImageDemo.imjoy.html"
   },
   {
+   "name": "WebCAM-Demo",
+   "type": "window",
+   "tags": [],
+   "ui": "",
+   "version": "0.1.0",
+   "cover": "",
+   "description": "This plugin uses getUserMedia to get video stream from the webcam",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "api_version": "0.1.5",
+   "env": "",
+   "requirements": [],
+   "dependencies": [],
+   "defaults": {
+    "w": 20,
+    "h": 10
+   },
+   "uri": "demos/WebCAM-Demo.imjoy.html"
+  },
+  {
    "name": "WebPython-Matplotlib",
    "type": "web-python-window",
    "version": "0.1.0",
