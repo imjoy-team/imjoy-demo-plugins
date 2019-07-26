@@ -318,7 +318,7 @@
    "type": "window",
    "tags": [],
    "ui": "",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "cover": "",
    "description": "This plugin shows a tiled image from https://annapalm.pasteur.fr/#/ht with Leaflet.",
    "icon": "extension",
@@ -343,7 +343,7 @@
    "type": "window",
    "tags": [],
    "ui": "",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "cover": "",
    "description": "This plugin uses getUserMedia to get video stream from the webcam",
    "icon": "extension",
@@ -351,6 +351,9 @@
    "outputs": null,
    "api_version": "0.1.5",
    "env": "",
+   "permissions": [
+    "camera"
+   ],
    "requirements": [],
    "dependencies": [],
    "defaults": {
