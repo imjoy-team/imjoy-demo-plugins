@@ -1,0 +1,92 @@
+<docs lang="markdown">
+# Tiled Image Demo with Leaflet
+
+Tiled image source: https://annapalm.pasteur.fr/#/ht
+Leaflet: https://leafletjs.com/
+
+</docs>
+
+<config lang="json">
+{
+  "name": "TiledImageDemo",
+  "type": "window",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.1",
+  "cover": "",
+  "description": "This plugin shows a tiled image from https://annapalm.pasteur.fr/#/ht with Leaflet.",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "api_version": "0.1.5",
+  "env": "",
+  "requirements": ["https://unpkg.com/leaflet@1.5.1/dist/leaflet.css", "https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"],
+  "dependencies": [],
+  "defaults": {"w": 20, "h": 10, "fullscreen": true}
+}
+</config>
+
+<script lang="javascript">
+
+function initMap(){
+   const maxZoom = 16;
+   const screenWidth = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+    // Setup the map
+    const map =  new L.Map('mapid', {
+        crs: L.CRS.Simple,
+        worldCopyJump: false,
+        center: new L.LatLng(0.0, 0.0),
+        zoom: maxZoom,
+        maxZoom: maxZoom,
+        minZoom: 10,
+        zoomControl: false
+    });
+    const tile_urls = {'widefield': 'https://annapalm.pasteur.fr/static/dzi-viewer/HT/input_wf_rgb/input_wf_rgb_files/{z}/{x}_{y}.jpeg',
+                    'PALM(sparse)': 'https://annapalm.pasteur.fr/static/dzi-viewer/HT/input_sr_rgb/input_sr_rgb_files/{z}/{x}_{y}.jpeg',
+                    'ANNA-PALM(widefield)': 'https://annapalm.pasteur.fr/static/dzi-viewer/HT/reco_wf_rgb/reco_wf_rgb_files/{z}/{x}_{y}.jpeg',
+                    'ANNA-PALM(sparse)': 'https://annapalm.pasteur.fr/static/dzi-viewer/HT/reco_sr_rgb/reco_sr_rgb_files/{z}/{x}_{y}.jpeg',
+                    'ANNA-PALM(widefield+sparse)': 'https://annapalm.pasteur.fr/static/dzi-viewer/HT/reco_wf_sr_rgb/reco_wf_sr_rgb_files/{z}/{x}_{y}.jpeg',}
+    const baseLayers = {}
+    const overlays = {}
+    for (let k in tile_urls) {
+      // Declare a tile layer and add to map
+      const tileURL = tile_urls[k];
+      const tiles = new L.TileLayer(tileURL, {
+          noWrap: true,
+          maxZoom: maxZoom,
+          tileSize: 257,
+          overlap: 1
+      });
+      baseLayers[k] = tiles
+      map.addLayer(tiles);
+    }
+    L.control.layers(baseLayers, overlays, {position: 'topleft', collapsed: screenWidth<600}).addTo(map);
+    //add zoom control with your options
+    L.control.zoom({position:'topleft'}).addTo(map);
+    map.setView(map.layerPointToLatLng(new L.Point(14000, 10000)), 12, true); // bounds of container 1004/748
+}
+
+class ImJoyPlugin {
+  async setup() {
+
+  }
+
+  async run(ctx) {
+    initMap();
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+     <div id="mapid"></div>
+  </div>
+</window>
+
+<style lang="css">
+#mapid { height: 100%; }
+</style>

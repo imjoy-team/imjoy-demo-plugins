@@ -1,0 +1,55 @@
+<docs lang="markdown">
+
+# Web-Python Matplotlib
+
+This plugin plot with matplotlib
+
+</docs>
+
+<config lang="json">
+{
+    "name": "WebPython-Matplotlib",
+    "type": "web-python-window",
+    "version": "0.1.0",
+    "description": "Using matplotlib with web-python powered by Pyodide.",
+    "tags": [],
+    "ui": "",
+    "cover": "",
+    "inputs": null,
+    "outputs": null,
+    "flags": [],
+    "icon": "extension",
+    "api_version": "0.1.3",
+    "env": "",
+    "requirements": ["matplotlib"],
+    "dependencies": []
+}
+</config>
+
+<script lang="python">
+from imjoy import api
+from matplotlib import pyplot as plt
+
+class ImJoyPlugin():
+    def setup(self):
+        api.log('initialized')
+
+    def run(self, ctx):
+        plt.plot([1, 2, 3, 4])
+        plt.ylabel('some numbers')
+        plt.show()
+
+api.export(ImJoyPlugin())
+
+</script>
+
+<window lang="html">
+    <div>
+
+    </div>
+</window>
+
+<style lang="css">
+
+</style>
+        
