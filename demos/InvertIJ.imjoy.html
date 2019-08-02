@@ -1,0 +1,70 @@
+﻿
+<docs lang="markdown">
+# Call Invert op in ImageJ
+
+</docs>
+
+<config lang="json">
+{
+  "name": "InvertIJ",
+  "type": "window",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.3",
+  "api_version": "0.1.2",
+  "description": "This demonstrate call the invert op in ImageJ",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "env": "",
+  "requirements": [],
+  "dependencies": ["oeway/ImJoy-Plugins:ImageJWrapper"],
+  "defaults": {"w": 20, "h": 14}
+}
+</config>
+
+<script lang="javascript">
+
+class ImJoyPlugin {
+  async setup() {
+    const ij = await api.getPlugin('ImageJWrapper')
+    window.execute = async function(module){
+      const files = document.getElementById('objs-panel-file').files
+      if(files.length <= 0){
+        alert('please select an image')
+      }
+      const inputObj = await ij.uploadFile(files[0])
+
+      let outObj = await ij.run_module('command:net.imagej.ops.create.img.CreateImgFromImg', {in: inputObj})
+      outObj = outObj.out
+      let ret = await ij.run_module(module, {in: inputObj, out: outObj})
+      const imageOut = await ij.retrieveObject(ret.out)
+      const imageIn = await ij.retrieveObject(inputObj)
+      
+      const outContainer = document.getElementById('container')
+      outContainer.innerHTML = `<img src="${imageIn}" style="width:100%;"></img> <br> <img src="${imageOut}" style="width:100%;"></img>` +outContainer.innerHTML
+      api.showDialog({type: 'imjoy/image-compare', "data": {first: imageIn, second: imageOut} } )
+    }
+  }
+  async run(my) {
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
+
+<window lang="html">
+  <div>
+  <p>
+    <input id="objs-panel-file" type="file">
+    <select id="module">
+      <option value="command:net.imagej.ops.image.invert.InvertII">InvertII</option>
+    </select>
+    <button id="objs-panel-upload" onclick="execute(document.getElementById('module').value)">Process</button>
+  </p>
+  <div id="container"></div>
+  </div>
+</window>
+
+<style lang="css">
+</style>
