@@ -1,0 +1,40 @@
+﻿<docs lang="markdown">
+[TODO: write documentation for this plugin.]
+</docs>
+
+<config lang="json">
+{
+  "name": "Calculator",
+  "type": "native-python",
+  "version": "0.1.0",
+  "description": "A simple calculator demo use numpy to calculate exp(x)",
+  "tags": [],
+  "ui": "Calculator",
+  "cover": "",
+  "inputs": null,
+  "outputs": null,
+  "flags": [],
+  "icon": "extension",
+  "api_version": "0.1.5",
+  "env": "",
+  "permissions": [],
+  "requirements": ["numpy"],
+  "dependencies": ["oeway/imjoy-demo-plugins:GetNumber"]
+}
+</config>
+
+<script lang="python">
+import numpy as np
+from imjoy import api
+
+class ImJoyPlugin():
+    def setup(self):
+        api.log('initialized')
+
+    async def run(self, ctx):
+        numb = ctx.data.numb
+        result = np.exp(numb)
+        await api.alert(f'Exp of {numb} is {result}')
+
+api.export(ImJoyPlugin())
+</script>

@@ -568,6 +568,47 @@
    "uri": "demos/threeJS.imjoy.html"
   },
   {
+   "name": "Calculator",
+   "type": "native-python",
+   "version": "0.1.0",
+   "description": "A simple calculator demo use numpy to calculate exp(x)",
+   "tags": [],
+   "ui": "Calculator",
+   "cover": "",
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "extension",
+   "api_version": "0.1.5",
+   "env": "",
+   "permissions": [],
+   "requirements": [
+    "numpy"
+   ],
+   "dependencies": [
+    "oeway/imjoy-demo-plugins:GetNumber"
+   ],
+   "uri": "examples/Calculator.imjoy.html"
+  },
+  {
+   "name": "GetNumber",
+   "type": "web-worker",
+   "tags": [],
+   "ui": "GetNumber",
+   "version": "0.1.0",
+   "cover": "",
+   "description": "a basic plugin uses api.prompt to get user input",
+   "icon": "extension",
+   "inputs": null,
+   "outputs": null,
+   "api_version": "0.1.5",
+   "env": "",
+   "permissions": [],
+   "requirements": [],
+   "dependencies": [],
+   "uri": "examples/GetNumber.imjoy.html"
+  },
+  {
    "name": "WindowPlugin",
    "type": "window",
    "tags": [],

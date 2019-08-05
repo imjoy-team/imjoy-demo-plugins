@@ -1,0 +1,38 @@
+﻿<docs>
+[TODO: write documentation for this plugin.]
+</docs>
+
+<config lang="json">
+{
+  "name": "GetNumber",
+  "type": "web-worker",
+  "tags": [],
+  "ui": "GetNumber",
+  "version": "0.1.0",
+  "cover": "",
+  "description": "a basic plugin uses api.prompt to get user input",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "api_version": "0.1.5",
+  "env": "",
+  "permissions": [],
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+
+<script lang="javascript">
+class ImJoyPlugin {
+  async setup() {
+    api.log('initialized')
+  }
+
+  async run(ctx) {
+    const answer = await api.prompt('Specify a number')
+    return {numb: Number(answer)}
+  }
+}
+
+api.export(new ImJoyPlugin())
+</script>
