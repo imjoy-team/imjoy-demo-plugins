@@ -443,6 +443,34 @@
    "uri": "demos/handlebarsJS.imjoy.html"
   },
   {
+   "name": "maui-demo",
+   "type": "native-python",
+   "version": "0.1.0",
+   "description": "A domo plugin for Multi-omics Autoencoder Integration: Deep learning-based heterogenous data analysis toolkit",
+   "tags": [],
+   "ui": "",
+   "cover": "https://dl.dropbox.com/s/kaugiuiqc6jcjkb/manui-training.png",
+   "inputs": null,
+   "outputs": null,
+   "flags": [],
+   "icon": "extension",
+   "api_version": "0.1.6",
+   "env": "conda create -n maui python=3.6",
+   "permissions": [],
+   "requirements": [
+    "maui-tools",
+    "scikit-learn",
+    "pandas",
+    "matplotlib",
+    "seaborn==0.9.0",
+    "lifelines==0.14.6"
+   ],
+   "dependencies": [
+    "oeway/ImJoy-Plugins:Im2Im-Dashboard"
+   ],
+   "uri": "demos/maui-demo.imjoy.html"
+  },
+  {
    "name": "showDialog Demo",
    "type": "web-worker",
    "version": "0.1.0",
@@ -569,7 +597,7 @@
   },
   {
    "name": "Calculator",
-   "type": "native-python",
+   "type": "web-python",
    "version": "0.1.0",
    "description": "A simple calculator demo use numpy to calculate exp(x)",
    "tags": [],
