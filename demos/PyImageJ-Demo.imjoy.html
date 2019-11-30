@@ -9,7 +9,7 @@ A PyImageJ demo ported from https://github.com/imagej/pyimagej
 {
     "name": "PyImageJ-Demo",
     "type": "native-python",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "api_version": "0.1.2",
     "description": "This plugin process image with frangiVesselness function in ImageJ",
     "tags": [],
@@ -18,8 +18,8 @@ A PyImageJ demo ported from https://github.com/imagej/pyimagej
     "outputs": null,
     "flags": [],
     "icon": "extension",
-    "env": "conda create -n imagej2 openjdk=8",
-    "requirements": ["conda: -c conda-forge pyimagej", "pip: scikit-image pillow"],
+    "env": ["conda create -n imagej", {"type": "binder", "spec": "oeway/pyimagej-binder-image/master"}],
+    "requirements": [],
     "dependencies": []
 }
 </config>
@@ -52,8 +52,9 @@ class ImJoyPlugin():
     def run(self, my):
         # Import an image with scikit-image.
         # NB: Blood vessel image from: https://www.fi.edu/heart/blood-vessels
+        api.showStatus('Loading example image...')
         img = io.imread('https://www.fi.edu/sites/fi.live.franklinds.webair.com/files/styles/featured_large/public/General_EduRes_Heart_BloodVessels_0.jpg')
-        
+        api.showStatus('Processing image with the Frangi vesselness op in ImageJ...')
         img = np.mean(img, axis=2)
         # Invoke the Frangi vesselness op in ImageJ.
         vessels = np.zeros(img.shape, dtype=img.dtype)
@@ -62,8 +63,7 @@ class ImJoyPlugin():
         # Display image
         imgurl1 = array2base64(img)
         imgurl2 = array2base64(vessels)
-        data = {"first": imgurl1, 'second': imgurl2, 'name': 'Process with frangiVesselness in ImageJ', 'type': 'imjoy/image-compare'}
-        return data
+        api.showDialog({'type': 'imjoy/image-compare', 'name': 'ImageJ Demo', 'data': {"first": imgurl1, 'second': imgurl2, 'name': 'Process with frangiVesselness in ImageJ'}})
 
 api.export(ImJoyPlugin())
 </script>
