@@ -9,7 +9,7 @@ A PyImageJ demo ported from https://github.com/imagej/pyimagej
 {
     "name": "PyImageJ-Demo",
     "type": "native-python",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "api_version": "0.1.2",
     "description": "This plugin process image with frangiVesselness function in ImageJ",
     "tags": [],
@@ -18,8 +18,8 @@ A PyImageJ demo ported from https://github.com/imagej/pyimagej
     "outputs": null,
     "flags": [],
     "icon": "extension",
-    "env": ["conda create -n imagej", {"type": "binder", "spec": "oeway/pyimagej-binder-image/master"}],
-    "requirements": [],
+    "env": ["conda create -n imagej", {"type": "binder", "spec": "oeway/pyimagej-binder-image/master", "skip_requirements": true}],
+    "requirements": ["conda: openjdk=8", "conda: -c conda-forge pyimagej", "pip: scikit-image pillow"],
     "dependencies": []
 }
 </config>
