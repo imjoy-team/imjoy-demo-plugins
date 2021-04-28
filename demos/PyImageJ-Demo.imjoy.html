@@ -48,7 +48,8 @@ def array2base64(img):
 class ImJoyPlugin():
     def setup(self):
         print('setup in python')
-    def run(self, my):
+
+    async def run(self, my):
         # Import an image with scikit-image.
         # NB: Blood vessel image from: https://www.fi.edu/heart/blood-vessels
         api.showStatus('Loading example image...')
@@ -62,7 +63,10 @@ class ImJoyPlugin():
         # Display image
         imgurl1 = array2base64(img)
         imgurl2 = array2base64(vessels)
-        api.showDialog({'type': 'imjoy/image-compare', 'name': 'ImageJ Demo', 'data': {"first": imgurl1, 'second': imgurl2, 'name': 'Process with frangiVesselness in ImageJ'}})
+        viewer = await api.createWindow(src="https://kaibu.org")
+        await viewer.view_image(imgurl1, name="input image")
+        await viewer.view_image(imgurl2, name="output image")
+        # api.showDialog({'type': 'imjoy/image-compare', 'name': 'ImageJ Demo', 'data': {"first": imgurl1, 'second': imgurl2, 'name': 'Process with frangiVesselness in ImageJ'}})
 
 api.export(ImJoyPlugin())
 </script>
